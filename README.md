@@ -14,7 +14,7 @@ Icon | Description
 Color | Description
 ----- | -----------
 ![Public surveillance][img_redall] | Red background — observing a public outdoor area, accessable by everyone
-![Outdoor surveillance][img_blueall] | Blue background — observing a private outdoor area, accessable only by autherized persons
+![Outdoor surveillance][img_blueall] | Blue background — observing a private outdoor area, accessable only by authorized persons
 ![Indoor surveillance][img_greenall] | Green background — observing an indoor area
 ![Fixed cameras, fixme][img_todo_fixedall]<br>![Dome cameras, fixme][img_todo_domeall]<br>![Guards, fixme][img_todo_guardall]<br>![Automatic Licence Plate Recognition, fixme][img_todo_traffic] | Yellow icon — camera or guard marked with a fixme key because it needs further attention
 
