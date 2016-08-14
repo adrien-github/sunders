@@ -63,6 +63,12 @@
       <a title='where to get more info' href='#where'><img src='./images/link-where.png' alt='where to get more info'></a>
     </div>
 
+    <div class='permalinkbar'>
+      <form>
+        <button class='permalink' type='button' id='permalinkButton'>.</button><input class='permalink' id='permalinkField' value=' << click for permalink with current coordinates'>
+      </form>
+    </div>
+
     <div class='slider'>
       <div class='slider-item slider-logo'>
         <img src='./images/logo.png' alt='Surveillance under Surveillance'>
@@ -118,7 +124,7 @@
       <div class='slider-item slider-footer text-small'>
         &#x2756; &#x2756; &#x2756;
         <br><br><br>
-        <p>Surveillance under Surveillance is based on the phantastic <a href='https://github.com/khris78/osmcamera' target='_blank'>osmcamera</a> [<a href='./files/license_osmcamera.txt' target='_blank'>CC-BY-SA / MIT / GPLv3 / WTFPL</a>] project of <a href='https://github.com/khris78' target='_blank'>khris78</a>. Furthermore it uses the v0.7.7 code of <a href='https://github.com/Leaflet/Leaflet' target='_blank'>Leaflet/Leaflet</a> [<a href='./files/license_Leaflet.txt' target='_blank'>BSD-2-Clause</a>] and the v0.2.1 code of <a href='https://github.com/Leaflet/Leaflet.label' target='_blank'>Leaflet/Leaflet.label</a> [<a href='./files/license_Leaflet.label.txt' target='_blank'>MIT</a>]. The map itself is the work of millions of <a href='https://www.openstreetmap.org' target='_blank'>OpenStreetMap</a> [<a href='https://www.openstreetmap.org/copyright' target='_blank'>CC BY-SA</a>] contributors. The eye and the locks are icons of <a href='http://fontawesome.io' target='_blank'>Font Awesome</a> [<a href='http://fontawesome.io/license/' target='_blank'>SIL OFL 1.1 / MIT / CC BY 3.0</a>]. The font <a href='https://fontlibrary.org/de/font/grabstein-grotesk' target='_blank'>Grabstein Grotesk</a> [<a href='http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL' target='_blank'>OLF</a>] is used for the titles.</p>
+        <p>Surveillance under Surveillance is based on the phantastic <a href='https://github.com/khris78/osmcamera' target='_blank'>osmcamera</a> [<a href='./files/license_osmcamera.txt' target='_blank'>CC-BY-SA / MIT / GPLv3 / WTFPL</a>] project of <a href='https://github.com/khris78' target='_blank'>khris78</a>. Furthermore it uses the v0.7.7 code of <a href='https://github.com/Leaflet/Leaflet' target='_blank'>Leaflet/Leaflet</a> [<a href='./files/license_Leaflet.txt' target='_blank'>BSD-2-Clause</a>] and the v0.2.1 code of <a href='https://github.com/Leaflet/Leaflet.label' target='_blank'>Leaflet/Leaflet.label</a> [<a href='./files/license_Leaflet.label.txt' target='_blank'>MIT</a>]. The map itself is the work of millions of <a href='https://www.openstreetmap.org' target='_blank'>OpenStreetMap</a> [<a href='https://www.openstreetmap.org/copyright' target='_blank'>CC BY-SA</a>] contributors. The eye, the chain, and the locks are icons of <a href='http://fontawesome.io' target='_blank'>Font Awesome</a> [<a href='http://fontawesome.io/license/' target='_blank'>SIL OFL 1.1 / MIT / CC BY 3.0</a>]. The font <a href='https://fontlibrary.org/de/font/grabstein-grotesk' target='_blank'>Grabstein Grotesk</a> [<a href='http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL' target='_blank'>OLF</a>] is used for the titles.</p>
         <br><br>
         &#x041C;&#x0410;&#x041A;&#x0421; &#x041A;&#x0410;&#x041C;&#x0412;&#x0410;&#x0427;<br>
         Aljoscha Rompe Laan 5<br>

@@ -39,13 +39,28 @@ function getXmlHttpRequest() {
 }
 
 // Create an URL for the current location and use this URL to reload the map.
-function permalink() {
+function getPermalink() {
   var center = map.getCenter();
   var lat = Math.round(center.lat * 100000000) / 100000000;
   var lon = Math.round(center.lng * 100000000) / 100000000;
-  var serverUrl = 'http://' + window.location.hostname + '/sunders/index.php';
-  var newLoc = serverUrl + "?lat=" + lat + "&lon=" + lon + "&zoom=" + map.getZoom();
-  window.location = newLoc;
+  var serverUrl = 'https://' + window.location.hostname + '/sunders/index.php';
+  var permalinkUrl = serverUrl + "?lat=" + lat + "&lon=" + lon + "&zoom=" + map.getZoom();
+  return permalinkUrl;
+}
+
+// Use the permalink URL to reload the map.
+function permalink() {
+  window.location = getPermalink();
+}
+
+// Display the permalink URL.
+function displayPermalink() {
+  document.getElementById("permalinkField").value = getPermalink();
+}
+
+// Button to display the permalink URL.
+window.onload = function() {
+  document.getElementById("permalinkButton").onclick = displayPermalink;
 }
 
 // Add plots to map.
@@ -334,7 +349,7 @@ function addCameraDetailsData(plotMarker, plot) {
         if (suffix == "jpg" || suffix == "gif" || suffix == "png") {
           popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank"><img alt="image" src="' + descr + '" width="200"/></a>';
         } else {
-          popupDataTable = popupDataTable + '<a href="' + descr + '">Link</a>';
+          popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank">Link</a>';
         }
       } else {
         popupDataTable = popupDataTable + plot[x];
