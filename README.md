@@ -159,7 +159,7 @@ Key | Value
 * Surveillance under Surveillance is based on the phantastic [osmcamera](https://github.com/khris78/osmcamera) [CC-BY-SA / MIT / GPLv3 / WTFPL] project of [khris78](https://github.com/khris78).
 * Furthermore it uses the v0.7.7 code of [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) [BSD-2-Clause] and the v0.2.1 code of [Leaflet/Leaflet.label](https://github.com/Leaflet/Leaflet.label) [MIT].
 * The map itself is the work of millions of [OpenStreetMap](https://www.openstreetmap.org/) [CC BY-SA]  contributors.
-* The eye and the locks are icons of [Font Awesome](http://fontawesome.io/) [SIL OFL 1.1 / MIT / CC BY 3.0].
+* The eye, the chain, and the locks are icons of [Font Awesome](http://fontawesome.io/) [SIL OFL 1.1 / MIT / CC BY 3.0].
 * The font [Grabstein Grotesk](https://fontlibrary.org/de/font/grabstein-grotesk) [OLF] is used for the titles.
 
 
