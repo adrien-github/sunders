@@ -84,7 +84,7 @@ label {
   height: 40px;
   z-index: 2;
   background: #0192d9;
-  background-color: rgba(1, 146, 217, 0.9);
+  background-color: rgba(1, 146, 217, 0.6);
   color: #f1eee8;
   transform: translate3d(490px, 0, 0);
   transition: all .8s;
