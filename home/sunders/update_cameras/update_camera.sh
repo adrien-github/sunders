@@ -84,7 +84,7 @@ do
   targetDirName=`echo "$targetDirName" | sed 's/.osc.gz$/.state.txt/'`
   wget -nv "$targetDirName" -O lastState.txt 2>&1 | tee -a $logFileName
 
-  echo `date "+%d/%m/%Y %H:%M"`" - Start processing sequence number $curSeqNum" | tee -a "$logFileName"
+  echo `date "+%d/%m/%Y %H:%M"`" - Finish processing sequence number $curSeqNum" | tee -a "$logFileName"
 done
 
 rm "/var/lock/update_camera"

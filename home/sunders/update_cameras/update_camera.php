@@ -1,5 +1,7 @@
 <?php
 
+include "config.php";
+
 $elementTypes = array();
 $count = 0;
 $countDelete = 0;
@@ -12,44 +14,53 @@ $id = 0;
 $latitude = 0;
 $longitude = 0;
 
-include "config.php";
-
 $mysqli = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB);
 
 if($mysqli->connect_errno) {
   echo "Error while connecting to DB : $mysqli->error \n" ;
   exit(1);
 }
-
 $mysqli->autocommit(FALSE);
 
 if (! ($deleteStmt = $mysqli->prepare("DELETE FROM position WHERE id=?"))) {
   echo 'Error while preparing delete position statement : ' . $mysqli->error ;
   exit(1);
 }
-
 $deleteStmt->bind_param('d', $id);
 
 if (! ($deleteTagStmt = $mysqli->prepare("DELETE FROM tag WHERE id=?"))) {
   echo 'Error while preparing delete tag statement : ' . $mysqli->error ;
   exit(1);
 }
-
 $deleteTagStmt->bind_param('d', $id);
+
+if (USE_STATISTICS) {
+  if (! ($deleteStatsStmt = $mysqli->prepare("DELETE FROM statistics WHERE id=?"))) {
+    echo 'Error while preparing delete statistics statement : ' . $mysqli->error ;
+    exit(1);
+  }
+  $deleteStatsStmt->bind_param('d', $id);
+}
 
 if (! ($insertStmt = $mysqli->prepare("INSERT INTO position (id, latitude, longitude) VALUES (?, ?, ?)"))) {
   echo 'Error while preparing insert position statement : ' . $mysqli->error ;
   exit(1);
 }
-
 $insertStmt->bind_param('dii', $id, $latitude, $longitude);
 
 if (! ($insertTagStmt = $mysqli->prepare("INSERT INTO tag (id, k, v) VALUES (?, ?, ?)"))) {
   echo 'Error while preparing insert tag statement : ' . $mysqli->error ;
   exit(1);
 }
-
 $insertTagStmt->bind_param('dss', $id, $k, $v);
+
+if (USE_STATISTICS) {
+  if (! ($insertStatsStmt = $mysqli->prepare("INSERT INTO statistics (id, ts, year, month, day, t, week, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"))) {
+    echo 'Error while preparing insert statistics statement : ' . $mysqli->error ;
+    exit(1);
+  }
+  $insertStatsStmt->bind_param('dsiiisii', $id, $ts, $year, $month, $day, $t, $week, $version);
+}
 
 function printDebug() {
   global $elementTypes, $count, $countDelete, $countModify, $countCreate;
@@ -91,24 +102,11 @@ function startElement ($parser, $name, $attrs) {
   global $elementTypes, $count, $mode, $curNodeAttrs, $curNodeTags;
   $count++;
 
-/*
-  echo "---- $name -----\n";
-  foreach($attrs as $k => $v) {
-    echo "$k => $v\n";
-  }
-*/
-
   if (array_key_exists($name, $elementTypes)) {
     $elementTypes[$name] += 1;
   } else {
     $elementTypes[$name] = 1;
   }
-
-/*
-  if ($count % 50000 == 0) {
-    printDebug();
-  }
-*/
 
   if ($name == 'modify' || $name == 'delete' or $name == 'create') {
     $mode = $name;
@@ -123,15 +121,26 @@ function startElement ($parser, $name, $attrs) {
 }
 
 function endElement ($parser, $name) {
-  global $mode, $deleteStmt, $deleteTagStmt, $insertStmt, $insertTagStmt, $id, $latitude, $longitude, $lat, $lon, $k, $v, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
+  if (USE_STATISTICS) {
+    global $mode, $deleteStmt, $deleteTagStmt, $deleteStatsStmt, $insertStmt, $insertTagStmt, $insertStatsStmt, $id, $latitude, $longitude, $k, $v, $ts, $year, $month, $day, $t, $week, $version, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
+  } else {
+    global $mode, $deleteStmt, $deleteTagStmt, $insertStmt, $insertTagStmt, $id, $latitude, $longitude, $lat, $lon, $k, $v, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
+  }
 
   if ($name == 'modify' || $name == 'delete' or $name == 'create') {
     $mode = '';
   } else if ($name == 'node') {
     if ($mode == 'delete') {
       $id = $curNodeAttrs['id'];
+
+      if (USE_STATISTICS) {
+        if (! $deleteStatsStmt->execute()) {
+          echo "***** Error : Deleting statistics $id : ". $deleteStatsStmt->error . "\n";
+        }
+      }
+
       if (! $deleteTagStmt->execute()) {
-        echo "***** Error : Deleting tags $id : ". $deleteStmt->error . "\n";
+        echo "***** Error : Deleting tags $id : ". $deleteTagStmt->error . "\n";
       }
       if (! $deleteStmt->execute()) {
         echo "***** Error : Deleting $id : ". $deleteStmt->error . "\n";
@@ -153,8 +162,15 @@ function endElement ($parser, $name) {
 
         if ($mode == 'modify') {
           $countModify++;
+
+          if (USE_STATISTICS) {
+            if (! $deleteStatsStmt->execute()) {
+              echo "***** Error : Deleting statistics $id for modification : ". $deleteStatsStmt->error . "\n";
+            }
+          }
+
           if (! $deleteTagStmt->execute()) {
-            echo "***** Error : Deleting tags $id for modification : ". $deleteStmt->error . "\n";
+            echo "***** Error : Deleting tags $id for modification : ". $deleteTagStmt->error . "\n";
           }
           if (! $deleteStmt->execute()) {
             echo "***** Error : Deleting $id for modification : ". $deleteStmt->error . "\n";
@@ -170,32 +186,32 @@ function endElement ($parser, $name) {
           echo "***** Error : inserting $id ($latitude x $longitude) : ". $insertStmt->error . "\n";
         }
 
-        $k='lat';
-        $v=$curNodeAttrs['lat'];
+        $k = 'lat';
+        $v = $curNodeAttrs['lat'];
         if (! $insertTagStmt->execute()) {
           echo "***** Error : inserting latitude $v for $id : ". $insertTagStmt->error . "\n";
         }
 
-        $k='lon';
-        $v=$curNodeAttrs['lon'];
+        $k = 'lon';
+        $v = $curNodeAttrs['lon'];
         if (! $insertTagStmt->execute()) {
           echo "***** Error : inserting longitude $v for $id : ". $insertTagStmt->error . "\n";
         }
 
-        $k='userid';
-        $v=$curNodeAttrs['user'];
+        $k = 'userid';
+        $v = $curNodeAttrs['user'];
         if (! $insertTagStmt->execute()) {
           echo "***** Error : inserting user $v for $id : ". $insertTagStmt->error . "\n";
         }
 
-        $k='version';
-        $v=$curNodeAttrs['version'];
+        $k = 'version';
+        $v = $curNodeAttrs['version'];
         if (! $insertTagStmt->execute()) {
           echo "***** Error : inserting version $v for $id : ". $insertTagStmt->error . "\n";
         }
 
-        $k='timestamp';
-        $v=$curNodeAttrs['timestamp'];
+        $k = 'timestamp';
+        $v = $curNodeAttrs['timestamp'];
         if (! $insertTagStmt->execute()) {
           echo "***** Error : inserting timestamp $v for $id : ". $insertTagStmt->error . "\n";
         }
@@ -203,6 +219,21 @@ function endElement ($parser, $name) {
         foreach($curNodeTags as $k => $v) {
           if (! $insertTagStmt->execute()) {
             echo "***** Error : inserting tag $k => $v for $id : ". $insertTagStmt->error . "\n";
+          }
+        }
+
+        if (USE_STATISTICS) {
+          $date = date_create_from_format('Y-m-d\TH:i:s\Z', $curNodeAttrs['timestamp']);
+
+          $ts = $curNodeAttrs['timestamp'];
+          $year = date_format($date, 'Y');
+          $month = date_format($date, 'n');
+          $day = date_format($date, 'j');
+          $t = date_format($date, 'H:i:s');
+          $week = intval(date_format($date, 'W')); // use intval() because of leading zero for weeks < 10
+          $version = $curNodeAttrs['version'];
+          if (! $insertStatsStmt->execute()) {
+            echo "***** Error : inserting ts $ts, year $year, month $month, day $day, t $t, week $week, version $version for $id : ". $insertStatsStmt->error . "\n";
           }
         }
 

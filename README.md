@@ -111,6 +111,30 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
   - Open the file **config.php** and change the definitions of **DEFAULT_ZOOM**, **DEFAULT_LAT**, and **DEFAULT_LON** to set the initial focus of the map to the location you want.
 
+7. Check the website
+
+  - Enter the URL of your Surveillance under Surveillance instance (e.g. https://myserver/sunders/) into your browser.
+
+  - You should see a map with camera icons now.
+
+8. Optional: Add statistics table to your database
+
+  - Change to the directory **~/sunders/init_cameras/db/**.
+
+  - Execute the file **addStatistics.sql** for database user **camera**.
+
+    `mysql camera -h localhost -u camera --password=[camera user password] < addStatistics.sql`
+
+  - Open the file **~/sunders/update_cameras/config.php** and change the value of **USE_STATISTICS** from **false** to **true**.
+
+    `define('USE_STATISTICS', true);`
+
+  - Open the file **/var/www/sunders/config.php** and change the value of **USE_STATISTICS** from **false** to **true**.
+
+    `define('USE_STATISTICS', true);`
+
+  - Check the statistics by entering the URL of the visualization site (e.g. https://myserver/sunders/statistics.php) into your browser.
+
 ## Surveillance nodes
 
 Surveillance under Surveillance uses data from Openstreetmap contributors that is not visualized on the regular [Openstreetmap](https://www.openstreetmap.org/) site. If you like to add new cameras or guards or if you like to revise existing entries [use your existing OSM account](https://www.openstreetmap.org/login) or [create a new one](https://www.openstreetmap.org/user/new).

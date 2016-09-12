@@ -107,8 +107,20 @@
       ?>
 
       <div class='slider-item'>
-        <p><br><br>Besides contributing to Openstreetmap feel free to fork this project on <a href='https://github.com/kamba4/sunders' target='_blank'>Github</a>.</p>
+        <p><br><br>
+
+      <?php
+        if (USE_STATISTICS) {
+          echo "  <a href='./statistics.php'>Find out</a> how many surveillance nodes have been uploaded to OSM during a certain period of time.</p>\n
+                </div>\n
+                <div class='slider-item'>\n
+                  <p>";
+        }
+      ?>
+
+        Besides contributing to Openstreetmap feel free to fork this project on <a href='https://github.com/kamba4/sunders' target='_blank'>GitHub</a>.</p>
       </div>
+
       <div id='where'></div>
       <div class='slider-item slider-title'>
         <img src='./images/title-where.png' alt='where to get more info'>

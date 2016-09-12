@@ -9,4 +9,6 @@ define('MYSQL_DB', 'camera');
 define('MYSQL_USER', 'camselect');
 define('MYSQL_PASSWD', null);
 
+define('USE_STATISTICS', false);
+
 ?>
