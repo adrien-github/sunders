@@ -1,8 +1,14 @@
 /* COLORS
-beige:     #f1eee8 / 241,238,232
-lightblue: #0192d9 /   1,146,217
-darkblue:  #050585 /   5,  5,133
-gray:      #d9d0c9 / 217,208,201 */
+beige:       #f1eee8 / 241,238,232
+lightblue:   #0192d9 /   1,146,217
+darkblue:    #050585 /   5,  5,133
+gray:        #d9d0c9 / 217,208,201
+
+red icon:    #d40055 / 212,  0, 85
+blue icon:   #0055d4 /   0, 85,212
+green icon:  #00d455 /   0,212, 85
+gray icon:   #6c5d53 / 108, 93, 83
+yellow icon: #ffdd55 / 255,221, 85 */
 
 html {
   height: 100%;
@@ -146,7 +152,7 @@ input.permalink {
 }
 
 .slider-logo {
-  align-self: center;;
+  align-self: center;
   padding-top: 140px;
   padding-bottom: 20px;
 }
