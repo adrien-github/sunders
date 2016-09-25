@@ -336,7 +336,7 @@ function drawCameraFocusDome(plotLatLng, cameraHeight) {
 // Add camera popup to camera marker.
 function addCameraDetailsData(plotMarker, plot) {
   popupDataTable = '<table class="popup-content">'
-    + '<tr><td>id</td><td><a href="https://www.openstreetmap.org/node/' + (plot.id) + '" target="_blank">' + (plot.id) + '</td></tr>'
+    + '<tr><td>id</td><td><a href="https://www.openstreetmap.org/node/' + (plot.id) + '" target="_blank">' + (plot.id) + '</a></td></tr>'
     // + '<tr><td>user osm</td><td>' + (plot.userid) + '</td></tr>'
     + '<tr><td>latitude</td><td>' + (plot.lat) + '</td></tr>'
     + '<tr><td>longitude</td><td>' + (plot.lon) + '</td></tr>';

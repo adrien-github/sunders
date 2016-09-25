@@ -105,6 +105,7 @@ button.permalink {
   border: none;
   font-family: monospace;
   font-size: 1em;
+  cursor: pointer;
 }
 
 input.permalink {
@@ -241,4 +242,13 @@ input.permalink {
 /* Margin (top-right-bottom-left) around table displayed in popup. */
 .popup-content {
   margin: 0px 0px 0px 2px;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }

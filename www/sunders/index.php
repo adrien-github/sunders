@@ -43,12 +43,12 @@
     <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
     <meta name='msapplication-TileColor' content='#f1eee8'>
     <meta name='msapplication-TileImage' content='./mstile-144x144.png'>
-  </head>
-  <body>
 
     <link rel='stylesheet' href='./Leaflet/leaflet.css'>
     <link rel='stylesheet' href='./Leaflet.label/leaflet.label.css'>
     <link rel='stylesheet' href='./css/sunders.css'>
+  </head>
+  <body>
 
     <input type='checkbox' id='slider-toggle' checked='checked'>
     <label for='slider-toggle'>
@@ -145,6 +145,9 @@
         Here is our <a href='./files/sunders.asc' target='_blank'>PGP key</a> &mdash; use it!<br>
         EE12 1A7D C3FB 52BD 46AA<br>
         DD0D 547B 21CD C20D DD88<br><br>
+        <i>Please note that only encrypted emails will be answered.<br>Let us know where we can find your PGP key.<br>
+        Get help in English for <a href='https://ssd.eff.org/en/module/how-use-pgp-windows' target='_blank'>Windows</a> / <a href='https://ssd.eff.org/en/module/how-use-pgp-mac-os-x' target='_blank'>OS X</a> / <a href='https://ssd.eff.org/en/module/how-use-pgp-linux' target='_blank'>Linux</a> or in <a href='https://netzpolitik.org/2013/anleitung-so-verschlusselt-ihr-eure-e-mails-mit-pgp/' target='_blank'>German</a>.</i>
+        <br><br>
       </div>
     </div>
 
