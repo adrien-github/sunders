@@ -121,30 +121,6 @@ a:hover {
   margin: 2px;
 }
 
-.page .periodNavi {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: rgba(1, 146, 217, 0.2);
-  width: 660px;
-  margin-top: 40px;
-  padding: 2px 0px 2px 0px;
-  font-family: monospace;
-  font-size: 1.2em;
-}
-
-.page table {
-  padding-top: 20px;
-  font-family: monospace;
-  font-size: 1.2em;
-  width: 660px;
-}
-
-table td {
-  background-color: rgba(1, 146, 217, 0.2);
-  text-align: right;
-}
-
 .page .info {
   width: 740px;
   padding-top: 40px;
