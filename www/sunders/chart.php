@@ -47,15 +47,17 @@
       echo "</div>\n";
   }
 
-  function getButtongroupMonth($m) {
+  function getButtongroupMonth($y, $m) {
     echo "<div class='buttongroup bg_month'>\n";
     $isChecked = ($m == 'all') ? "checked" : "";
     echo "<input type='radio' onClick='refreshChart();' id='bg_month_all' name='month' value='all' ".$isChecked.">\n
           <label for='bg_month_all'>all</label>\n";
     for ($i = 1; $i <= 12; $i++) {
       $isChecked = ($m == $i) ? "checked" : "";
+      // echo "<input type='radio' onClick='refreshChart();' id='bg_month_".$i."' name='month' value='".$i."' ".$isChecked.">\n
+      //       <label for='bg_month_".$i."'>".$i."</label>\n";
       echo "<input type='radio' onClick='refreshChart();' id='bg_month_".$i."' name='month' value='".$i."' ".$isChecked.">\n
-            <label for='bg_month_".$i."'>".$i."</label>\n";
+            <label for='bg_month_".$i."'>".date('M', strtotime($y.'-'.$i))."</label>\n";
     }
       echo "</div>\n";
   }
@@ -148,12 +150,18 @@
     $uploads = getOSMUploadsForPeriod($uploadsPerPeriod, $periodKey);
     $ratio = getRatioForOSMUploads($uploads, $maxUploads);
 
+    if ($m != 'all') {
+      $day = substr(date('D', strtotime($y.'-'.$m.'-'.$period)), 0, 2);
+      $dayDiv = "<div>".$day."</div>\n";
+    } else {
+      $dayDiv = '';
+    }
+
     echo "<div class='slice'>\n
-            <a href='./uploads.php?year=".$y."&month=".$m."&period=".$periodKey."'>\n
-              <div>".$uploads."</div>\n
-              <div class='column' style='width: ".$columnWidth."; height: ".(360 * $ratio)."px;'></div>\n
-              <div>".$period."</div>\n
-            </a>\n
+            <div>".$uploads."</div>\n
+            <div class='column' style='width: ".$columnWidth."; height: ".(360 * $ratio)."px;'></div>\n
+            <div>".$period."</div>\n
+            ".$dayDiv."
           </div>\n";
   }
 
@@ -189,7 +197,7 @@
         $previous = date('jS', strtotime($str.' -1 day'));
       }
 
-      $current = date('jS', strtotime($str));
+      $current = date('l jS', strtotime($str));
 
       if ($p == idate('t', strtotime($str))) {
         $next = '';

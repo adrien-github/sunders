@@ -30,7 +30,7 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
  - Copy the content of **www/sunders/** to your server's www directory, e.g. to **/var/www/sunders/**.
 
-2. Set up the datebase
+2. Set up the database
 
  - Change to the directory **~/sunders/init_cameras/db/**.
 
@@ -38,7 +38,7 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
  - Create the database **camera** by executing the file **createDB.sql**.
 
-    `mysql -h localhost -u root --password=[mysql root password] < createDb.sql`
+    `mysql -h localhost -u root --password=[mysql root password] < createDB.sql`
 
 3. Initialize the database
 
@@ -119,7 +119,7 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
 8. Optional: Add statistics table to your database
 
-  - Change to the directory **~/sunders/init_cameras/db/**.
+  - Go to the directory **~/sunders/init_cameras/db/**.
 
   - Execute the file **addStatistics.sql** for database user **camera**.
 

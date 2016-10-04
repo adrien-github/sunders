@@ -21,14 +21,14 @@
 
     <div class='page'>
       <form class='header form'>
-        <img src='./images/title-sunders.png' alt='Surveillance under Surveillance'>
+        <a href='./index.php'><img src='./images/title-sunders.png' alt='Surveillance under Surveillance'></a>
         <?php getButtongroupYear($statYear); ?>
-        <?php getButtongroupMonth($statMonth); ?>
+        <?php getButtongroupMonth($statYear, $statMonth); ?>
       </form>
       <div class='chart'>
         <?php getUploadsChart($statYear, $statMonth); ?>
       </div>
-      <div class="info text-small">This chart contains worldwide uploads of OSM surveillance nodes within the selected period. Only the latest upload of each node is considered, i.e. if a node exists in version 3 the first and second version of this node are excluded. Click on a column to inspect the corresponding nodes.</div>
+      <div class="info text-small">This chart contains worldwide uploads of OSM surveillance nodes within the selected period. Only the latest upload of each node is considered, i.e. if a node exists in version 3 the first and second version of this node are excluded.</div>
       <div class='footer'>
         <a href='./index.php'>MAP 'EM ALL</a>
       </div>

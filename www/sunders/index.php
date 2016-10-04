@@ -111,7 +111,7 @@
 
       <?php
         if (USE_STATISTICS) {
-          echo "  <a href='./statistics.php'>Find out</a> how many surveillance nodes have been uploaded to OSM during a certain period of time.</p>\n
+          echo "  Find out how many <a href='./statistics.php'>surveillance nodes</a> have been uploaded to OSM during a certain period of time.</p>\n
                 </div>\n
                 <div class='slider-item'>\n
                   <p>";
