@@ -50,20 +50,20 @@
   </head>
   <body>
 
-    <input type='checkbox' id='slider-toggle' checked='checked'>
-    <label for='slider-toggle'>
+    <input class='slider-toggle-input' type='checkbox' id='slider-id' checked='checked'>
+    <label class='slider-toggle' for='slider-id'>
       <img src='./images/slider-toggle.png'>
     </label>
 
     <div id='map'></div>
 
-    <div class='linkbar'>
+    <div class='topbar anchorlinkbar'>
       <a title='what this is about' href='#what'><img src='./images/link-what.png' alt='what this is about'></a>
       <a title='how to participate' href='#how'><img src='./images/link-how.png' alt='how to participate'></a>
       <a title='where to get more info' href='#where'><img src='./images/link-where.png' alt='where to get more info'></a>
     </div>
 
-    <div class='permalinkbar'>
+    <div class='topbar permalinkbar'>
       <form>
         <button class='permalink' type='button' id='permalinkButton'>.</button><input class='permalink' id='permalinkField' value=' << click for permalink with current coordinates'>
       </form>
