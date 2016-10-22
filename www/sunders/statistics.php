@@ -28,7 +28,7 @@
       <div class='chart'>
         <?php getUploadsChart($statYear, $statMonth); ?>
       </div>
-      <div class="info text-small">This chart contains worldwide uploads of OSM surveillance nodes within the selected period. Only the latest upload of each node is considered, i.e. if a node exists in version 3 the first and second version of this node are excluded.</div>
+      <div class="info text-small">This chart represents worldwide uploads of OSM surveillance nodes within the selected period. Only the latest upload of each node is considered, i.e. if a node exists in version 3 the first and second version of this node are excluded.</div>
       <div class='footer'>
         <a href='./index.php'>MAP 'EM ALL</a>
       </div>
