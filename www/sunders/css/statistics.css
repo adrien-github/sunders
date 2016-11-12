@@ -143,3 +143,15 @@ a:hover {
 .footer a:hover {
   color: #050585;
 }
+
+.to-be-translated {
+  color: #d40055;
+}
+.to-be-translated a {
+  color: #ac39ac;
+  text-decoration: none;
+}
+
+.to-be-translated a:hover {
+  color: #d40055;
+}

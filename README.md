@@ -109,7 +109,7 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
   - Rename the file **config.php.example** to **config.php**.
 
-  - Open the file **config.php** and change the definitions of **DEFAULT_ZOOM**, **DEFAULT_LAT**, and **DEFAULT_LON** to set the initial focus of the map to the location you want.
+  - Open the file **config.php** and change the definitions of **DEFAULT_ZOOM**, **DEFAULT_LAT**, and **DEFAULT_LON** to set the initial focus of the map to the location you want. Furthermore you can set the **DEFAULT_LANGUAGE**.
 
 7. Check the website
 

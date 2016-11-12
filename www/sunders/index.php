@@ -1,22 +1,26 @@
 <?php
+  if (!isset($pathToWebFolder)) {
+    $pathToWebFolder = './';
+  }
 
-  // TEST-TEST-TEST    I18N BRANCH    TEST-TEST-TEST
+  include $pathToWebFolder.'config.php';
 
-  include './config.php';
-  include './add-lists.php';
-
-  $initialIsDefault = 'true';
+  if (!isset($initialLanguage)) {
+    $initialLanguage = DEFAULT_LANGUAGE;
+  }
   $initialZoom = DEFAULT_ZOOM;
   $initialLat = DEFAULT_LAT;
   $initialLon = DEFAULT_LON;
+
+  include $pathToWebFolder.'decode-json.php';
+  include $pathToWebFolder.'i18n.php';
+  include $pathToWebFolder.'add-lists.php';
 
   /* Check if the URL contains a numeric zoom value and if that value is between 1 and 18.
       If not use DEFAULT_ZOOM from config.php. */
   if (array_key_exists('zoom', $_GET)) {
     $initialZoom = $_GET['zoom'];
-    if (is_numeric($initialZoom) && intval($initialZoom) >= 1 && intval($initialZoom) <= 18) {
-      $initialIsDefault = 'false';
-    } else {
+    if (!is_numeric($initialZoom) || intval($initialZoom) < 1 || intval($initialZoom) > 18) {
       $initialZoom = DEFAULT_ZOOM;
     }
   }
@@ -26,9 +30,7 @@
   if (array_key_exists('lat', $_GET) && array_key_exists('lon', $_GET)) {
     $initialLat = $_GET['lat'];
     $initialLon = $_GET['lon'];
-    if (is_numeric($initialLat) && is_numeric($initialLon)) {
-      $initialIsDefault = 'false';
-    } else {
+    if (!is_numeric($initialLat) || !is_numeric($initialLon)) {
       $initialLat = DEFAULT_LAT;
       $initialLon = DEFAULT_LON;
     }
@@ -38,135 +40,201 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='UTF-8'/>
+    <meta charset="UTF-8"/>
     <title>Surveillance under Surveillance</title>
 
-    <link rel='shortcut icon' href='./favicon.ico'>
-    <link rel='icon' type='image/png' href='./favicon.png' sizes='32x32'>
-    <link rel='apple-touch-icon' sizes='180x180' href='./apple-touch-icon.png'>
-    <meta name='msapplication-TileColor' content='#f1eee8'>
-    <meta name='msapplication-TileImage' content='./mstile-144x144.png'>
+    <link rel="shortcut icon" href="<?php echo $pathToWebFolder.'favicon.ico' ?>">
+    <link rel="icon" type="image/png" href="<?php echo $pathToWebFolder.'favicon.png' ?>" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $pathToWebFolder.'apple-touch-icon.png' ?>">
+    <meta name="msapplication-TileColor" content="#f1eee8">
+    <meta name="msapplication-TileImage" content="<?php echo $pathToWebFolder.'mstile-144x144.png' ?>">
 
-    <link rel='stylesheet' href='./Leaflet/leaflet.css'>
-    <link rel='stylesheet' href='./Leaflet.label/leaflet.label.css'>
-    <link rel='stylesheet' href='./css/sunders.css'>
+    <link rel="stylesheet" href="<?php echo $pathToWebFolder.'Leaflet/leaflet.css' ?>">
+    <link rel="stylesheet" href="<?php echo $pathToWebFolder.'Leaflet.label/leaflet.label.css' ?>">
+    <link rel="stylesheet" href="<?php echo $pathToWebFolder.'css/sunders.css' ?>">
   </head>
   <body>
 
-    <input class='slider-toggle-input' type='checkbox' id='slider-id' checked='checked'>
-    <label class='slider-toggle' for='slider-id'>
-      <img src='./images/slider-toggle.png'>
+    <input class="slider-toggle-input" type="checkbox" id="slider-id" checked="checked">
+    <label class="slider-toggle" for="slider-id">
+      <img src="<?php echo $pathToWebFolder.'images/slider-toggle.png' ?>">
     </label>
 
-    <div id='map'></div>
+    <div id="map"></div>
 
-    <div class='topbar anchorlinkbar'>
-      <a title='what this is about' href='#what'><img src='./images/link-what.png' alt='what this is about'></a>
-      <a title='how to participate' href='#how'><img src='./images/link-how.png' alt='how to participate'></a>
-      <a title='where to get more info' href='#where'><img src='./images/link-where.png' alt='where to get more info'></a>
+    <div class="topbar anchorlinkbar">
+      <a title="what this is about" href="#what"><img src="<?php echo $pathToWebFolder.'images/link-what-'.$initialLanguage.'.png' ?>" alt="what this is about"></a>
+      <a title="how to participate" href="#how"><img src="<?php echo $pathToWebFolder.'images/link-how-'.$initialLanguage.'.png' ?>" alt="how to participate"></a>
+      <a title="where to get more info" href="#where"><img src="<?php echo $pathToWebFolder.'images/link-where-'.$initialLanguage.'.png' ?>" alt="where to get more info"></a>
     </div>
 
-    <div class='topbar permalinkbar'>
+    <div class="topbar permalinkbar">
       <form>
-        <button class='permalink' type='button' id='permalinkButton'>.</button><input class='permalink' id='permalinkField' value=' << click for permalink with current coordinates'>
+        <button class="permalink" type="button" id="permalinkButton"></button>
+        <?php echo '<input class="permalink" id="permalinkField" value=" &lt;&lt; '.translate($i18nCommon, $i18nCommonDefault, 'permalink-alt', [], [], []).'">'; ?>
+
+        <?php
+          addListLanguages($initialLanguage);
+        ?>
+
       </form>
     </div>
 
-    <div class='slider'>
-      <div class='slider-item slider-logo'>
-        <img src='./images/logo.png' alt='Surveillance under Surveillance'>
-      </div>
-      <div id='what'></div>
-      <div class='slider-item slider-title'>
-        <img src='./images/title-what.png' alt='what this is about'>
-      </div>
-      <div class='slider-item'>
-        <p>Surveillance under Surveillance shows you cameras and guards &mdash; watching you &mdash; almost everywhere. You can see where they are located and, if the information is available, what type they are, the area they observe, or other interesting facts.</p>
-      </div>
-      <div class='slider-item'>
-        <p>Different icons and colors give you a quick overview about the indexed surveillance entries. Click on those icons on the map to get the available information.<p>
+    <div class="slider">
+      <div class="slider-item slider-logo">
+        <img src="<?php echo $pathToWebFolder.'images/logo.png' ?>" alt="Surveillance under Surveillance">
       </div>
 
       <?php
-        addListSymbology('./json/symbology.json');
+        $subtitle = translate($i18nCommon, $i18nCommonDefault, 'subtitle', [], [], []);
+        $translation = translate($i18nCommon, $i18nCommonDefault, 'translation', [], [], []);
+
+        if (! empty($subtitle)) {
+          echo '<div class="slider-subtitle">'.$subtitle.'</div>';
+        }
+
+        if (! empty($translation)) {
+          echo '<div class="slider-translation">'.$translation.'</div>';
+        }
       ?>
 
-      <div id='how'></div>
-      <div class='slider-item slider-title'>
-        <img src='./images/title-how.png' alt='how to participate'>
+      <div id="what"></div>
+      <div class="slider-item slider-title">
+        <img src="<?php echo $pathToWebFolder.'images/title-what-'.$initialLanguage.'.png' ?>" alt="what this is about">
       </div>
-      <div class='slider-item'>
-        <p>Surveillance under Surveillance uses data from Openstreetmap contributors that is not visualized on the regular <a href="https://www.openstreetmap.org" target="_blank">Openstreetmap</a> site. If you like to add new cameras or guards or if you like to revise existing entries <a href="https://www.openstreetmap.org/login" target="_blank">use your existing OSM account</a> or <a href="https://www.openstreetmap.org/user/new" target="_blank">create a new one</a>.</p>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'what-show', [], [], []); ?></p>
       </div>
-      <div class='slider-item'>
-        <p>Our database is updated once an hour. So it might take a while until your OSM entries are visible on the Surveillance under Surveillance map.</p>
-      </div>
-      <div class='slider-item'>
-        <p>These are the most common key/value combinations to describe a surveillance node at Openstreetmap:</p>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'what-icons', [], [], []); ?><p>
       </div>
 
       <?php
-        addListManual('./json/manual.json');
+        addListSymbology($pathToWebFolder.'json/symbology.json', $i18nSymbology, $i18nSymbologyDefault);
       ?>
 
-      <div class='slider-item'>
+      <div id="how"></div>
+      <div class="slider-item slider-title">
+        <img src="<?php echo $pathToWebFolder.'images/title-how-'.$initialLanguage.'.png' ?>" alt="how to participate">
+      </div>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'how-osm', ['https://www.openstreetmap.org/login', 'https://www.openstreetmap.org/user/new'], [['https://www.openstreetmap.org'], ['OpenStreetMap']], []); ?></p>
+      </div>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'how-update', [], [], []); ?></p>
+      </div>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'how-keyval', [], [], []); ?></p>
+      </div>
+
+      <?php
+        addListManual($pathToWebFolder.'json/manual.json', $i18nManual, $i18nManualDefault);
+      ?>
+
+      <div class="slider-item">
         <p><br><br>
 
       <?php
         if (USE_STATISTICS) {
-          echo "  Find out how many <a href='./statistics.php'>surveillance nodes</a> have been uploaded to OSM during a certain period of time.</p>\n
-                </div>\n
-                <div class='slider-item'>\n
-                  <p>";
+          echo translate($i18nCommon, $i18nCommonDefault, 'how-stats', [$pathToWebFolder.$initialLanguage.'/statistics.php'], [], []).'</p>
+                </div>
+                <div class="slider-item">
+                  <p>';
         }
+
+        echo translate($i18nCommon, $i18nCommonDefault, 'how-fork', [], [['https://github.com/kamba4/sunders'], ['GitHub']], []);
       ?>
 
-        Besides contributing to Openstreetmap feel free to fork this project on <a href='https://github.com/kamba4/sunders' target='_blank'>GitHub</a>.</p>
+        </p>
       </div>
 
-      <div id='where'></div>
-      <div class='slider-item slider-title'>
-        <img src='./images/title-where.png' alt='where to get more info'>
+      <div id="where"></div>
+      <div class="slider-item slider-title">
+        <img src="<?php echo $pathToWebFolder.'images/title-where-'.$initialLanguage.'.png' ?>" alt="where to get more info">
       </div>
-      <div class='slider-item'>
-        <p>Visit the following sites about surveillance related topics:</p>
+      <div class="slider-item">
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'where-sites', [], [], []); ?></p>
       </div>
 
       <?php
-        addListLinks('./json/links.json');
+        addListLinks($pathToWebFolder.'json/links.json', $i18nLinks, $i18nLinksDefault);
       ?>
 
-      <div class='slider-item slider-footer text-small'>
+      <div class="slider-item slider-footer text-small">
         &#x2756; &#x2756; &#x2756;
         <br><br><br>
-        <p>Surveillance under Surveillance is based on the phantastic <a href='https://github.com/khris78/osmcamera' target='_blank'>osmcamera</a> [<a href='./files/license_osmcamera.txt' target='_blank'>CC-BY-SA / MIT / GPLv3 / WTFPL</a>] project of <a href='https://github.com/khris78' target='_blank'>khris78</a>. Furthermore it uses the v0.7.7 code of <a href='https://github.com/Leaflet/Leaflet' target='_blank'>Leaflet/Leaflet</a> [<a href='./files/license_Leaflet.txt' target='_blank'>BSD-2-Clause</a>] and the v0.2.1 code of <a href='https://github.com/Leaflet/Leaflet.label' target='_blank'>Leaflet/Leaflet.label</a> [<a href='./files/license_Leaflet.label.txt' target='_blank'>MIT</a>]. The map itself is the work of millions of <a href='https://www.openstreetmap.org' target='_blank'>OpenStreetMap</a> [<a href='https://www.openstreetmap.org/copyright' target='_blank'>CC BY-SA</a>] contributors. The eye, the chain, and the locks are icons of <a href='http://fontawesome.io' target='_blank'>Font Awesome</a> [<a href='http://fontawesome.io/license/' target='_blank'>SIL OFL 1.1 / MIT / CC BY 3.0</a>]. The font <a href='https://fontlibrary.org/de/font/grabstein-grotesk' target='_blank'>Grabstein Grotesk</a> [<a href='http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL' target='_blank'>OLF</a>] is used for the titles.</p>
+        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'footer-credits', [], [
+            [
+              'https://github.com/khris78/osmcamera',
+              $pathToWebFolder.'files/license_osmcamera.txt',
+              'https://github.com/khris78',
+              'https://github.com/Leaflet/Leaflet',
+              $pathToWebFolder.'files/license_Leaflet.txt',
+              'https://github.com/Leaflet/Leaflet.label',
+              $pathToWebFolder.'files/license_Leaflet.label.txt',
+              'https://www.openstreetmap.org',
+              'https://www.openstreetmap.org/copyright',
+              'http://fontawesome.io',
+              'http://fontawesome.io/license/',
+              'https://fontlibrary.org/de/font/grabstein-grotesk',
+              'http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL'
+            ], [
+              'osmcamera',
+              'CC-BY-SA / MIT / GPLv3 / WTFPL',
+              'khris78',
+              'Leaflet/Leaflet',
+              'BSD-2-Clause',
+              'Leaflet/Leaflet.label',
+              'MIT',
+              'OpenStreetMap',
+              'CC BY-SA',
+              'Font Awesome',
+              'SIL OFL 1.1 / MIT / CC BY 3.0',
+              'Grabstein Grotesk',
+              'OLF'
+            ]
+          ], []); ?></p>
         <br><br>
         &#x041C;&#x0410;&#x041A;&#x0421; &#x041A;&#x0410;&#x041C;&#x0412;&#x0410;&#x0427;<br>
         Aljoscha Rompe Laan 5<br>
         2517 AR Den Haag<br>
-        &#x73;&#x75;&#x6e;&#x64;&#x65;&#x72;&#x73; &#x28;&#x61;&#x74;&#x29; &#x6b;&#x61;&#x6d;&#x62;&#x61;&#x34; &#x28;&#x64;&#x6f;&#x74;&#x29; &#x63;&#x72;&#x75;&#x78; &#x28;&#x64;&#x6f;&#x74;&#x29; &#x75;&#x62;&#x65;&#x72;&#x73;&#x70;&#x61;&#x63;&#x65; &#x28;&#x64;&#x6f;&#x74;&#x29; &#x64;&#x65;<br><br>
-        Here is our <a href='./files/sunders.asc' target='_blank'>PGP key</a> &mdash; use it!<br>
+        &#x73;&#x75;&#x6e;&#x64;&#x65;&#x72;&#x73; &#x28;<?php echo translate($i18nCommon, $i18nCommonDefault, 'at', [], [], []); ?>&#x29; &#x6b;&#x61;&#x6d;&#x62;&#x61;&#x34; &#x28;<?php echo translate($i18nCommon, $i18nCommonDefault, 'dot', [], [], []); ?>&#x29; &#x63;&#x72;&#x75;&#x78; &#x28;<?php echo translate($i18nCommon, $i18nCommonDefault, 'dot', [], [], []); ?>&#x29; &#x75;&#x62;&#x65;&#x72;&#x73;&#x70;&#x61;&#x63;&#x65; &#x28;<?php echo translate($i18nCommon, $i18nCommonDefault, 'dot', [], [], []); ?>&#x29; &#x64;&#x65;<br><br>
+        <?php echo translate($i18nCommon, $i18nCommonDefault, 'footer-pgp', [$pathToWebFolder.'files/sunders.asc'], [], []); ?><br>
         EE12 1A7D C3FB 52BD 46AA<br>
         DD0D 547B 21CD C20D DD88<br><br>
-        <i>Please note that only encrypted emails will be answered.<br>Let us know where we can find your PGP key.<br>
-        Get help in English for <a href='https://ssd.eff.org/en/module/how-use-pgp-windows' target='_blank'>Windows</a> / <a href='https://ssd.eff.org/en/module/how-use-pgp-mac-os-x' target='_blank'>OS X</a> / <a href='https://ssd.eff.org/en/module/how-use-pgp-linux' target='_blank'>Linux</a> or in <a href='https://netzpolitik.org/2013/anleitung-so-verschlusselt-ihr-eure-e-mails-mit-pgp/' target='_blank'>German</a>.</i>
+        <i>
+          <?php echo translate($i18nCommon, $i18nCommonDefault, 'footer-note', [], [], []); ?><br>
+          <?php echo translate($i18nCommon, $i18nCommonDefault, 'footer-your-key', [], [], []); ?><br>
+          <?php
+            if ($initialLanguage == 'de') {
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', ['https://netzpolitik.org/2013/anleitung-so-verschlusselt-ihr-eure-e-mails-mit-pgp/'], [], []);
+            } elseif ($initialLanguage == 'es') {
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/es/module/como-usar-pgp-para-windows-pc', 'https://ssd.eff.org/es/module/c%C3%B3mo-usar-pgp-para-mac-os-x', 'https://ssd.eff.org/es/module/como-usar-pgp-para-linux'], ['Windows', 'macOS', 'Linux']], []);
+            } elseif ($initialLanguage == 'fr') {
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/fr/module/pgp-sous-windows-le-ba-ba', 'https://ssd.eff.org/fr/module/guide-dutilisation-de-pgp-pour-mac-os-x', 'https://ssd.eff.org/fr/module/pgp-sous-linux-le-ba-ba'], ['Windows', 'macOS', 'Linux']], []);
+            } elseif ($initialLanguage == 'ru') {
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-windows', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-mac', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-linux'], ['Windows', 'macOS', 'Linux']], []);
+            } else {
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/en/module/how-use-pgp-windows', 'https://ssd.eff.org/en/module/how-use-pgp-mac-os-x', 'https://ssd.eff.org/en/module/how-use-pgp-linux'], ['Windows', 'macOS', 'Linux']], []);
+            }
+          ?>
+        </i>
         <br><br>
       </div>
     </div>
 
-    <script language='javascript'>
+    <script language="javascript">
       <?php
-        echo "var initialIsDefault = $initialIsDefault;\n";
-        echo "var initialZoom = $initialZoom;\n";
-        echo "var initialLat = $initialLat;\n";
-        echo "var initialLon = $initialLon;\n";
+        echo 'var initialZoom = '.$initialZoom.';
+              var initialLat = '.$initialLat.';
+              var initialLon = '.$initialLon.';';
       ?>
     </script>
 
-    <script src='./Leaflet/leaflet.js'></script>
-    <script src='./Leaflet.label/leaflet.label.js'></script>
-    <script src='./js/leafletembed_icons.js'></script>
-    <script src='./js/leafletembed_functions.js'></script>
+    <script src="<?php echo $pathToWebFolder.'Leaflet/leaflet.js' ?>"></script>
+    <script src="<?php echo $pathToWebFolder.'Leaflet.label/leaflet.label.js' ?>"></script>
+    <script src="<?php echo $pathToWebFolder.'js/leafletembed_icons.js' ?>"></script>
+    <script src="<?php echo $pathToWebFolder.'js/leafletembed_functions.js' ?>"></script>
 
   </body>
 </html>

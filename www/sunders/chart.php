@@ -1,7 +1,4 @@
 <?php
-
-  include './config.php';
-
   // current year, month, and period
   $statYear   = date('Y');  // YYYY
   $statMonth  = date('n');  // 1-12
@@ -37,27 +34,27 @@
   }
 
   function getButtongroupYear($y) {
-    echo "<div class='buttongroup bg_year'>\n";
+    echo '<div class="buttongroup bg_year">';
     for ($i = 2007; $i <= idate('Y'); $i++) {
-      $isChecked = ($y == $i) ? "checked" : "";
+      $isChecked = ($y == $i) ? 'checked' : '';
 
-      echo "<input type='radio' onClick='refreshChart();' id='bg_year_".$i."' name='year' value='".$i."' ".$isChecked.">\n
-            <label for='bg_year_".$i."'>".$i."</label>\n";
+      echo '<input type="radio" onClick="refreshChart();" id="bg_year_'.$i.'" name="year" value="'.$i.'" '.$isChecked.'>
+            <label for="bg_year_'.$i.'">'.$i.'</label>';
     }
-      echo "</div>\n";
+      echo '</div>';
   }
 
-  function getButtongroupMonth($y, $m) {
-    echo "<div class='buttongroup bg_month'>\n";
-    $isChecked = ($m == 'all') ? "checked" : "";
-    echo "<input type='radio' onClick='refreshChart();' id='bg_month_all' name='month' value='all' ".$isChecked.">\n
-          <label for='bg_month_all'>all</label>\n";
+  function getButtongroupMonth($y, $m, $i18nStatistics, $i18nStatisticsDefault) {
+    echo '<div class="buttongroup bg_month">';
+    $isChecked = ($m == 'all') ? 'checked' : '';
+    echo '<input type="radio" onClick="refreshChart();" id="bg_month_all" name="month" value="all" '.$isChecked.'>
+          <label for="bg_month_all">'.translate($i18nStatistics, $i18nStatisticsDefault, 'all', [], [], []).'</label>';
     for ($i = 1; $i <= 12; $i++) {
-      $isChecked = ($m == $i) ? "checked" : "";
-      echo "<input type='radio' onClick='refreshChart();' id='bg_month_".$i."' name='month' value='".$i."' ".$isChecked.">\n
-            <label for='bg_month_".$i."'>".date('M', strtotime($y.'-'.$i))."</label>\n";
+      $isChecked = ($m == $i) ? 'checked' : '';
+      echo '<input type="radio" onClick="refreshChart();" id="bg_month_'.$i.'" name="month" value="'.$i.'" '.$isChecked.'>
+            <label for="bg_month_'.$i.'">'.translate($i18nStatistics, $i18nStatisticsDefault, date('M', strtotime($y.'-'.$i)), [], [], []).'</label>';
     }
-      echo "</div>\n";
+      echo '</div>';
   }
 
   function getUploadsChartDataFromDB($y, $m) {
@@ -65,7 +62,7 @@
     $mysqli = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWD, MYSQL_DB);
     if ($mysqli->connect_errno) {
       header('Content-type: application/json');
-      $result = '{"error":"error while connecting to db : ' . $mysqli->error . '"}';
+      $result = '{"error":"error while connecting to db : '.$mysqli->error.'"}';
       echo $result;
       exit;
     }
@@ -108,7 +105,7 @@
     return $result;
   }
 
-  function getUploadsChart($y, $m) {
+  function getUploadsChart($y, $m, $i18nStatistics, $i18nStatisticsDefault) {
     $uploadsPerPeriod = getUploadsChartDataFromDB($y, $m);
     $maxUploads = max($uploadsPerPeriod);
 
@@ -116,13 +113,13 @@
       for ($i = 1; $i <= 12; $i++) {
         $period = date('M', strtotime($y.'-'.$i));
         $columnWidth = '40px';
-        getChartColumn($y, $m, $uploadsPerPeriod, $i, $maxUploads, $period, $columnWidth);
+        getChartColumn($y, $m, $uploadsPerPeriod, $i, $maxUploads, $period, $columnWidth, $i18nStatistics, $i18nStatisticsDefault);
       }
     } else {
       for ($i = 1; $i <= idate('t', strtotime($y.'-'.$m)); $i++) {
         $period = $i;
         $columnWidth = '20px';
-        getChartColumn($y, $m, $uploadsPerPeriod, $i, $maxUploads, $period, $columnWidth);
+        getChartColumn($y, $m, $uploadsPerPeriod, $i, $maxUploads, $period, $columnWidth, $i18nStatistics, $i18nStatisticsDefault);
       }
     }
   }
@@ -144,23 +141,26 @@
     return 0;
   }
 
-  function getChartColumn($y, $m, $uploadsPerPeriod, $periodKey, $maxUploads, $period, $columnWidth) {
+  function getChartColumn($y, $m, $uploadsPerPeriod, $periodKey, $maxUploads, $period, $columnWidth, $i18nStatistics, $i18nStatisticsDefault) {
     $uploads = getOSMUploadsForPeriod($uploadsPerPeriod, $periodKey);
     $ratio = getRatioForOSMUploads($uploads, $maxUploads);
 
     if ($m != 'all') {
-      $day = substr(date('D', strtotime($y.'-'.$m.'-'.$period)), 0, 2);
-      $dayDiv = "<div>".$day."</div>\n";
+      // $day = substr(date('D', strtotime($y.'-'.$m.'-'.$period)), 0, 2);
+      $day = translate($i18nStatistics, $i18nStatisticsDefault, substr(date('D', strtotime($y.'-'.$m.'-'.$period)), 0, 2), [], [], []);
+
+      $dayDiv = '<div>'.$day.'</div>';
     } else {
+      $period = translate($i18nStatistics, $i18nStatisticsDefault, $period, [], [], []);
       $dayDiv = '';
     }
 
-    echo "<div class='slice'>\n
-            <div>".$uploads."</div>\n
-            <div class='column' style='width: ".$columnWidth."; height: ".(360 * $ratio)."px;'></div>\n
-            <div>".$period."</div>\n
-            ".$dayDiv."
-          </div>\n";
+    echo '<div class="slice">
+            <div>'.$uploads.'</div>
+            <div class="column" style="width: '.$columnWidth.'; height: '.(360 * $ratio).'px;"></div>
+            <div>'.$period.'</div>
+            '.$dayDiv.'
+          </div>';
   }
 
 ?>

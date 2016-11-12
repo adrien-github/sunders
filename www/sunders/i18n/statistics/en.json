@@ -1,0 +1,26 @@
+{
+  "texts": {
+    "all": "all",
+    "Jan": "Jan",
+    "Feb": "Feb",
+    "Mar": "Mar",
+    "Apr": "Apr",
+    "May": "May",
+    "Jun": "Jun",
+    "Jul": "Jul",
+    "Aug": "Aug",
+    "Sep": "Sep",
+    "Oct": "Oct",
+    "Nov": "Nov",
+    "Dec": "Dec",
+    "Su": "Su",
+    "Mo": "Mo",
+    "Tu": "Tu",
+    "We": "We",
+    "Th": "Th",
+    "Fr": "Fr",
+    "Sa": "Sa",
+    "description": "This chart contains worldwide uploads of OSM surveillance nodes within the selected period. Only the latest upload of each node is considered, i.e. if a node exists in version 3 the first and second version of this node are excluded.",
+    "footer-text": "MAP 'EM ALL"
+  }
+}

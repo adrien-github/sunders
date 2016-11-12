@@ -1,0 +1,28 @@
+{
+  "texts": {
+    "permalink-alt": "klicken, um einen Permalink zu erzeugen",
+    "subtitle": "(Überwachung unter Überwachung)",
+    "translation": "",
+    "what-show": "Surveillance under Surveillance (Überwachung unter Überwachung) zeigt dir Kameras und Wachleute, die dich überwachen — fast überall. Du kannst ihren Standort sehen und, falls die Informationen verfügbar sind, welcher Art sie sind, welches Gebiet sie überwachen oder weitere interessante Fakten.",
+    "what-icons": "Unterschiedliche Symbole und Farben geben dir einen schnellen Überblick über die erfassten Überwachungseinträge. Klicke auf ein Symbol auf der Karte, um die verfügbaren Informationen zum zugehörigen Eintrag anzuzeigen.",
+    "how-osm": "Surveillance under Surveillance (Überwachung unter Überwachung) verwendet und zeigt Daten von OpenStreetMap-Mitwirkenden, die auf der regulären @@LF00-Seite nicht angezeigt werden. @@LT00 oder @@LT01, wenn du selbst neue Kameras oder Wachleute eintragen oder bestehende Einträge überarbeiten möchtest.",
+    "how-update": "Unsere Datenbank wird stündlich aktualisiert. Deshalb kann es einige Zeit dauern bis deine OSM-Einträge auf der Surveillance under Surveillance Karte angezeigt werden.",
+    "how-keyval": "Dies sind die gebräuchlichsten Schlüssel/Wert-Kombinationen, um einen Überwachungseintrag bei OpenStreetMap zu beschreiben:",
+    "how-stats": "Finde heraus wie viele @@LT00 während eines bestimmten Zeitraums auf OSM angelegt oder korrigiert wurden.",
+    "how-fork": "Neben der Mitarbeit bei OpenStreetMap, kannst du dieses Projekt auch bei @@LF00 forken.",
+    "where-sites": "Besuch die folgenden Seiten zu überwachungsrelevanten Themen:",
+    "footer-credits": "Surveillance under Surveillance (Überwachung unter Überwachung) basiert auf dem fantastischen @@LF00-Projekt [@@LF01] von @@LF02. Außerdem verwendet es den v0.7.7 Code von @@LF03 [@@LF04] und den v0.2.1 Code von @@LF05 [@@LF06]. Die Karte selbst ist die Arbeit von Millionen @@LF07 [@@LF08] Mitwirkenden. Das Auge, die Kette, und die Schlösser sind Symbole von @@LF09 [@@LF10]. Für die Überschriften wird die Schriftart @@LF11 [@@LF12] verwendet.",
+    "footer-pgp": "Hier ist unser @@LT00 — benutz ihn!",
+    "footer-note": "Bitte beachte, dass nur verschlüsselte Emails beantwortet werden.",
+    "footer-your-key": "Teil uns mit, wo wir deinen PGP-Schlüssel finden.",
+    "footer-help": "Hilfe zum Thema Verschlüsselung gibt es @@LT00.",
+    "at": "ät",
+    "dot": "punkt"
+  },
+  "links": {
+    "how-osm": [ "Verwende dein existierendes OSM-Konto", "lege ein neues Konto an" ],
+    "how-stats": [ "Überwachungseinträge" ],
+    "footer-pgp": [ "PGP-Schlüssel" ],
+    "footer-help": [ "hier" ]
+  }
+}

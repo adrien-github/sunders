@@ -10,14 +10,14 @@ function initMap() {
   // Set up the AJAX request.
   ajaxRequest=getXmlHttpRequest();
   if (ajaxRequest==null) {
-    alert("This browser does not support HTTP requests.");
+    alert('This browser does not support HTTP requests.');
     return;
   }
 
   // Set up the OSM tile layer with correct attribution
   var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var dataAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>';
-  var permalink = '<a href=#" onClick="permalink();return false;">Permalink</a>';
+  var permalink = '<a href="#" onClick="permalink(null);return false;">Permalink</a>';
   var mapAttrib = dataAttrib + ' | ' + permalink;
   osmTiles = new L.TileLayer(osmUrl, {minZoom: 4, maxZoom: 18, attribution: mapAttrib});
 
@@ -34,33 +34,44 @@ function initMap() {
 // Return XMLHttpRequest.
 function getXmlHttpRequest() {
   if (window.XMLHttpRequest) { return new XMLHttpRequest(); }
-  if (window.ActiveXObject)  { return new ActiveXObject("Microsoft.XMLHTTP"); }
+  if (window.ActiveXObject)  { return new ActiveXObject('Microsoft.XMLHTTP'); }
   return null;
 }
 
 // Create an URL for the current location and use this URL to reload the map.
-function getPermalink() {
+function getPermalink(switchToLanguage) {
   var center = map.getCenter();
   var lat = Math.round(center.lat * 100000000) / 100000000;
   var lon = Math.round(center.lng * 100000000) / 100000000;
-  var serverUrl = 'https://' + window.location.hostname + '/sunders/index.php';
-  var permalinkUrl = serverUrl + "?lat=" + lat + "&lon=" + lon + "&zoom=" + map.getZoom();
+  var serverUrl = location.protocol + '//' + location.host + location.pathname;
+
+  if (switchToLanguage != null) {
+    var supportedLanguages = [ 'de', 'en', 'es', 'fr', 'ru' ];
+    var urlLanguage = (serverUrl.slice(-3)).substring(0, 2);
+
+    if ((serverUrl.slice(-4)).substring(0, 1) == '/' && supportedLanguages.includes(urlLanguage)) {
+      serverUrl = serverUrl.substring(0, serverUrl.length - 3);
+    }
+    serverUrl = serverUrl + switchToLanguage;
+  }
+
+  var permalinkUrl = serverUrl + '?lat=' + lat + '&lon=' + lon + '&zoom=' + map.getZoom();
   return permalinkUrl;
 }
 
 // Use the permalink URL to reload the map.
-function permalink() {
-  window.location = getPermalink();
+function permalink(switchToLanguage) {
+  window.location = getPermalink(switchToLanguage);
 }
 
 // Display the permalink URL.
 function displayPermalink() {
-  document.getElementById("permalinkField").value = getPermalink();
+  document.getElementById('permalinkField').value = getPermalink(null);
 }
 
 // Button to display the permalink URL.
 window.onload = function() {
-  document.getElementById("permalinkButton").onclick = displayPermalink;
+  document.getElementById('permalinkButton').onclick = displayPermalink;
 }
 
 // Add plots to map.
@@ -100,7 +111,7 @@ function onClick(e) {
 function onStateChanged() {
   if (ajaxRequest.readyState == 4) { // 0 = UNSENT, 1 = OPENED, 2 = HEADERS_RECEIVED, 3 = LOADING, 4 = DONE
     if (ajaxRequest.status == 200) { // 200 = OK, 404 = Page not found
-      plotList = eval("(" + ajaxRequest.responseText + ")");
+      plotList = eval('(' + ajaxRequest.responseText + ')');
       removeMarkers();
       for (i=0; i<plotList.length; i++) {
         var plotLatLng;
@@ -174,10 +185,10 @@ function getPlotMarkerMulti(plot, plotLatLng) {
              + separator
              + '{&quot;lat&quot;:&quot;' + plot.poly[x]['lat'] + '&quot;,'
              + ' &quot;lon&quot;:&quot;' + plot.poly[x]['lon'] + '&quot;}';
-      separator = ",";
+      separator = ',';
     }
-    polygonCoordinates = polygonCoordinates + "]";
-    countTxt = '<span onclick="drawFootprint(\'' + polygonCoordinates + '\')">' + plot.count + "</span>";
+    polygonCoordinates = polygonCoordinates + ']';
+    countTxt = '<span onclick="drawFootprint(\'' + polygonCoordinates + '\')">' + plot.count + '</span>';
   } else {
     countTxt =  plot.count;
   }
@@ -346,7 +357,7 @@ function addCameraDetailsData(plotMarker, plot) {
       var descr = plot[x];
       if (descr.substr(0, 4) == 'http') {
         var suffix = descr.slice(-3).toLowerCase();
-        if (suffix == "jpg" || suffix == "gif" || suffix == "png") {
+        if (suffix == 'jpg' || suffix == 'gif' || suffix == 'png') {
           popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank"><img alt="image" src="' + descr + '" width="200"/></a>';
         } else {
           popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank">Link</a>';

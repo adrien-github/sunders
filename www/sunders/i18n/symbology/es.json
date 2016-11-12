@@ -1,0 +1,25 @@
+{
+  "texts": {
+    "title-icons": "Iconos",
+      "icon-fixed-alt": "Cámaras Fija",
+      "desc-fixed": "Cámara Fija — Usualmente abarca un área limitada",
+      "icon-dome-alt": "Cámaras Domo",
+      "desc-dome": "Cámara Domo — usualmente abarca un área de 360°",
+      "icon-guard-alt": "Guardia",
+      "desc-guard": "Guardia — ej: empleado de un servicio de seguridad",
+      "icon-alpr-alt": "Identificador automático de patentes",
+      "desc-alpr": "ICAP — identificador automático de patentes",
+    "title-colors": "Colores",
+      "icon-red-alt": "",
+      "desc-red": "Fondo rojo — observa un área publica en exteriores, accesible por cualquiera",
+      "icon-blue-alt": "",
+      "desc-blue": "Fondo azul — observa un área privada en exteriores, accesible solo por personal autorizado",
+      "icon-green-alt": "",
+      "desc-green": "Fondo verde — observa un área de interiores",
+      "icon-yellow-fixed-alt": "",
+      "icon-yellow-dome-alt": "",
+      "icon-yellow-guard-alt": "",
+      "icon-yellow-alpr-alt": "",
+      "desc-yellow": "Icono amarillo — cámara o guardia marcada como arréglame, ya que necesita ser revisado."
+  }
+}

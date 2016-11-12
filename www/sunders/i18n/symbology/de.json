@@ -1,0 +1,25 @@
+{
+  "texts": {
+    "title-icons": "Symbole",
+      "icon-fixed-alt": "Feststehende Kamera",
+      "desc-fixed": "Feststehende Kamera — überwacht meist einen begrenzten Bereich",
+      "icon-dome-alt": "Kuppelkamera",
+      "desc-dome": "Kuppelkamera — überwacht meist einen 360°-Bereich",
+      "icon-guard-alt": "Wachpersonal",
+      "desc-guard": "Wachpersonal — z.B. Beschäftigte eines Sicherheitsunternehmens",
+      "icon-alpr-alt": "Automatische Nummernschilderkennung",
+      "desc-alpr": "ANSE — Automatische Nummernschilderkennung",
+    "title-colors": "Farben",
+      "icon-red-alt": "Überwachung öffentlicher Bereiche",
+      "desc-red": "Roter Hintergrund — Überwachung eines öffentlichen Bereichs, der für alle zugänglich ist",
+      "icon-blue-alt": "Überwachung außerhalb eines Gebäudes",
+      "desc-blue": "Blauer Hintergrund — Überwachung eines Bereichs außerhalb eines Gebäudes, der nur für befugte Personen zugänglich ist",
+      "icon-green-alt": "Überwachung innerhalb eines Gebäudes",
+      "desc-green": "Grüner Hintergrund — Überwachung eines Bereichs innerhalb eines Gebäudes",
+      "icon-yellow-fixed-alt": "Feststehend Kamera, zu kontrollieren",
+      "icon-yellow-dome-alt": "Kuppelkamera, zu kontrollieren",
+      "icon-yellow-guard-alt": "Wachpersonal, zu kontrollieren",
+      "icon-yellow-alpr-alt": "Automatische Nummernschilderkennung, zu kontrollieren",
+      "desc-yellow": "Gelbes Symbol — Mit einem Kontrollkennzeichen markiere Kamera oder Wachpersonaleintrag, die/der noch korrigiert oder vervollständigt werden muss."
+  }
+}

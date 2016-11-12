@@ -1,0 +1,27 @@
+{
+  "texts": {
+    "permalink-alt": "click for permalink with coordinates",
+    "subtitle": "",
+    "translation": "",
+    "what-show": "Surveillance under Surveillance shows you cameras and guards — watching you — almost everywhere. You can see where they are located and, if the information is available, what type they are, the area they observe, or other interesting facts.",
+    "what-icons": "Different icons and colors give you a quick overview about the indexed surveillance entries. Click on those icons on the map to get the available information.",
+    "how-osm": "Surveillance under Surveillance uses data from OpenStreetMap contributors that is not visualized on the regular @@LF00 site. If you like to add new cameras or guards or if you like to revise existing entries @@LT00 or @@LT01.",
+    "how-update": "Our database is updated once an hour. So it might take a while until your OSM entries are visible on the Surveillance under Surveillance map.",
+    "how-keyval": "These are the most common key/value combinations to describe a surveillance node at OpenStreetMap:",
+    "how-stats": "Find out how many @@LT00 have been uploaded to OSM during a certain period of time.",
+    "how-fork": "Besides contributing to OpenStreetMap feel free to fork this project on @@LF00.",
+    "where-sites": "Visit the following sites about surveillance related topics:",
+    "footer-credits": "Surveillance under Surveillance is based on the phantastic @@LF00 [@@LF01] project of @@LF02. Furthermore it uses the v0.7.7 code of @@LF03 [@@LF04] and the v0.2.1 code of @@LF05 [@@LF06]. The map itself is the work of millions of @@LF07 [@@LF08] contributors. The eye, the chain, and the locks are icons of @@LF09 [@@LF10]. The font @@LF11 [@@LF12] is used for the titles.",
+    "footer-pgp": "Here is our @@LT00 — use it!",
+    "footer-note": "Please note that only encrypted emails will be answered.",
+    "footer-your-key": "Let us know where we can find your PGP key.",
+    "footer-help": "Get help for @@LF00 / @@LF01 / @@LF02.",
+    "at": "at",
+    "dot": "dot"
+  },
+  "links": {
+    "how-osm": [ "use your existing OSM account", "create a new one" ],
+    "how-stats": [ "surveillance nodes" ],
+    "footer-pgp": [ "PGP key" ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "texts": {
+    "title-icons": "",
+      "icon-fixed-alt": "",
+      "desc-fixed": "",
+      "icon-dome-alt": "",
+      "desc-dome": "",
+      "icon-guard-alt": "",
+      "desc-guard": "",
+      "icon-alpr-alt": "",
+      "desc-alpr": "",
+    "title-colors": "",
+      "icon-red-alt": "",
+      "desc-red": "",
+      "icon-blue-alt": "",
+      "desc-blue": "",
+      "icon-green-alt": "",
+      "desc-green": "",
+      "icon-yellow-fixed-alt": "",
+      "icon-yellow-dome-alt": "",
+      "icon-yellow-guard-alt": "",
+      "icon-yellow-alpr-alt": "",
+      "desc-yellow": ""
+  }
+}

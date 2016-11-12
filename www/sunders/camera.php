@@ -1,6 +1,6 @@
 <?php
 
-  include './config.php';
+  include $pathToWebFolder.'config.php';
 
   define(MAX_POINTS_FOR_QUICKHULL, 3000);
 
@@ -83,7 +83,7 @@
      $isBottom : 1 if bottom point is searched, -1 if top point is searched */
   function quickHullCalc(&$pointList, $count, $minPoint, $maxPoint, $isBottom) {
 
-    $msg = "Quick count=".$count.", min=(".$minPoint->id.",".$minPoint->lat.",".$minPoint->lon."), max=(".$minPoint->id.",".$minPoint->lat.",".$minPoint->lon."), isBottom=".$isBottom."\n";
+    $msg = 'Quick count='.$count.', min=('.$minPoint->id.','.$minPoint->lat.','.$minPoint->lon.'), max=('.$minPoint->id.','.$minPoint->lat.','.$minPoint->lon.'), isBottom='.$isBottom;
 
     $farthestPoint = null;
     $farthestDist = 0;
@@ -140,7 +140,7 @@
      representing the minimal convex polygon containing the points */
   function quickHull(&$pointList, $count) {
 
-    $msg= "Quick count=".$count."\n";
+    $msg= 'Quick count='.$count;
 
     if ($count == 0) {
       return array();
@@ -285,15 +285,15 @@
 
   /* Select the nodes to be returned, and cluster them on a grid if necessary */
   if ($rqtLonMin >= -180 && $lonMax <= 180) {
-    $sql="SELECT  id, latitude, longitude
+    $sql='SELECT  id, latitude, longitude
       FROM  position
       WHERE  latitude  between ? and ?
-      AND  longitude between ? and ?";
+      AND  longitude between ? and ?';
   } else {
-    $sql="SELECT  id, latitude, longitude
+    $sql='SELECT  id, latitude, longitude
       FROM  position
       WHERE  latitude  between ? and ?
-      AND  (longitude between ? and 1800000000 OR longitude between -1800000000 and ?)";
+      AND  (longitude between ? and 1800000000 OR longitude between -1800000000 and ?)';
 
     while ($rqtLonMin < -180) {
       $rqtLonMin += 360;
@@ -384,13 +384,13 @@
   $separator='';
 
   /* Writing selected points */
-  $sql="SELECT  k, v
+  $sql='SELECT  k, v
     FROM  tag
     WHERE  id = ?
-    AND k NOT IN ('lat', 'lon')";
+    AND k NOT IN ("lat", "lon")';
 
   $stmt = $mysqli->prepare($sql);
-  $stmt->bind_param("d", $id);
+  $stmt->bind_param('d', $id);
   $stmt->bind_result($k, $v);
 
   /* Writing grouped items or not */

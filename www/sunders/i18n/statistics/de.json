@@ -1,0 +1,26 @@
+{
+  "texts": {
+    "all": "alle",
+    "Jan": "Jan",
+    "Feb": "Feb",
+    "Mar": "Mär",
+    "Apr": "Apr",
+    "May": "Mai",
+    "Jun": "Jun",
+    "Jul": "Jul",
+    "Aug": "Aug",
+    "Sep": "Sep",
+    "Oct": "Okt",
+    "Nov": "Nov",
+    "Dec": "Dez",
+    "Su": "So",
+    "Mo": "Mo",
+    "Tu": "Di",
+    "We": "Mi",
+    "Th": "Do",
+    "Fr": "Fr",
+    "Sa": "Sa",
+    "description": "Dieses Diagramm enthält die, innerhalb der gewählten Zeitspanne, weltweit auf OSM hochgeladenen Überwachungseinträge. Dabei wird nur die letzte Aktualisierung jedes Eintrags berücksichtigt, d.h. wenn ein Eintrag in Version 3 existiert, bleiben die erste und die zweite Version dieses Eintrags unberücksichtigt.",
+    "footer-text": "MAP 'EM ALL"
+  }
+}

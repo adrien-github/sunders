@@ -1,0 +1,25 @@
+{
+  "texts": {
+    "title-icons": "Icons",
+      "icon-fixed-alt": "Fixed cameras",
+      "desc-fixed": "Fixed camera — usually observing a limited area",
+      "icon-dome-alt": "Dome cameras",
+      "desc-dome": "Dome camera — usually observing a 360° area",
+      "icon-guard-alt": "Guards",
+      "desc-guard": "Guard — e.g. an employee of a security service",
+      "icon-alpr-alt": "Automatic Licence Plate Recognition",
+      "desc-alpr": "ALPR — Automatic Licence Plate Recognition",
+    "title-colors": "Colors",
+      "icon-red-alt": "Public surveillance",
+      "desc-red": "Red background — observing a public outdoor area, accessable by everyone",
+      "icon-blue-alt": "Outdoor surveillance",
+      "desc-blue": "Blue background — observing a private outdoor area, accessable only by authorized persons",
+      "icon-green-alt": "Indoor surveillance",
+      "desc-green": "Green background — observing an indoor area",
+      "icon-yellow-fixed-alt": "Fixed cameras, fixme",
+      "icon-yellow-dome-alt": "Dome cameras, fixme",
+      "icon-yellow-guard-alt": "Guards, fixme",
+      "icon-yellow-alpr-alt": "Automatic Licence Plate Recognition, fixme",
+      "desc-yellow": "Yellow icon — camera or guard marked with a fixme key because it needs further attention"
+  }
+}

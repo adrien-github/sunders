@@ -3,6 +3,7 @@ beige:       #f1eee8 / 241,238,232
 lightblue:   #0192d9 /   1,146,217
 darkblue:    #050585 /   5,  5,133
 gray:        #d9d0c9 / 217,208,201
+purple:      #ac39ac / 172, 57,172
 
 red icon:    #d40055 / 212,  0, 85
 blue icon:   #0055d4 /   0, 85,212
@@ -113,27 +114,84 @@ body {
   background-color: rgba(1, 146, 217, 0.6);
 }
 
+.permalinkbar form {
+  display: flex;
+}
+
+
 button.permalink {
-  width: 31px;
+  width: 30px;
   height: 30px;
   background-image: url('../images/button_permalink.png');
   background-color: transparent;
-  color: #f1eee8;
   border: none;
-  font-family: monospace;
-  font-size: 1em;
+  margin: 0 2px;
   cursor: pointer;
 }
 
 input.permalink {
-  width: 390px;
-  height: 20px;
+  width: 360px;
   background-color: transparent;
   color: #f1eee8;
   border: 1px solid #f1eee8;
   padding: 4px;
   font-family: monospace;
   font-size: 1em;
+}
+
+#language {
+  width: 30px;
+  height: 30px;
+  background-image: url('../images/button_language.png');
+  background-color: transparent;
+  border: none;
+  margin: 0 2px;
+  list-style:none;
+  padding: 0;
+  cursor: pointer;
+}
+
+#language li {
+  position:relative;
+  line-height: 29px;
+  text-align: center;
+}
+
+#language ul {
+  list-style:none;
+  position:absolute;
+  padding: 0;
+  display: none;
+}
+
+#language li:hover ul {
+  display: block;
+}
+
+#language ul a {
+  color: #f1eee8;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+
+#language ul li {
+  width: 28px;
+  height: 28px;
+  margin-top: 2px;
+  border: 1px solid #0192d9;
+  background-color: rgba(1, 146, 217, 0.6);
+}
+
+#language ul li:hover {
+  background-color: rgba(1, 146, 217, 0.9);
+}
+
+#language ul a:first-child li {
+  margin-top: 8px;
+}
+
+.language-current {
+  font-weight: bold;
 }
 
 .slider {
@@ -179,6 +237,15 @@ input.permalink {
   padding-top: 120px;
   padding-bottom: 20px;
   padding-left: 40px;
+}
+
+.slider-subtitle {
+  text-align: center;
+}
+
+.slider-translation {
+  text-align: center;
+  font-style: italic;
 }
 
 .slider-list-title {
@@ -265,4 +332,16 @@ input.permalink {
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.to-be-translated {
+  color: #d40055;
+}
+.to-be-translated a {
+  color: #ac39ac;
+  text-decoration: none;
+}
+
+.to-be-translated a:hover {
+  color: #d40055;
 }

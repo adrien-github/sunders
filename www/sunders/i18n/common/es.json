@@ -1,0 +1,27 @@
+{
+  "texts": {
+    "permalink-alt": "haga clic para obtener un enlace permanente",
+    "subtitle": "(vigilando a la vigilancia)",
+    "translation": "",
+    "what-show": "Surveillance under Surveillance (vigilando a la vigilancia) muestra las cámaras y los guardas — que te vigilan — en casi todos lados. Podes ver su ubicación y, si la información esta disponible, de que tipo son, el área de cobertura u otra información relevante.",
+    "what-icons": "Diferentes iconos y colores dan una idea sobre las entradas cargadas. Hace clic sobre esos iconos en el mapa para ver la información disponible.",
+    "how-osm": "Surveillance under Surveillance (vigilando a la vigilancia) usa datos de OpenStreetMap, éstos no están visibles por defecto en el mapa regular del sitio de @@LF00. Si querés agregar nuevas cámaras o guardias, o si deseas revisar las entradas existentes podes @@LT01 en OSM o @@LT00.",
+    "how-update": "Nuestra base de datos se actualiza cada una hora. Así que puede tomar un rato hasta que los cambios en OSM se vean reflejados en este mapa.",
+    "how-keyval": "Estos son las propiedades mas comunes para describir un nodo de vigilancia en OpenStreetMap:",
+    "how-stats": "Fijáte cuantos @@LT00 fueron agregados a OSM en un periodo de tiempo.",
+    "how-fork": "Aparte de contribuir a Openstreetmap te invitamos a modificar este proyecto en @@LF00.",
+    "where-sites": "Podés visitar estos sitios que tratan sobre temas relacionas a la vigilancia:",
+    "footer-credits": "Surveillance under Surveillance (vigilando a la vigilancia) esta basado en el fantástico @@LF00 [@@LF01] un proyecto de @@LF02. Además usa la versión 0.7.7 del código de @@LF03 [@@LF04] y la versión 0.2.1 de @@LF05 [@@LF06]. El mapa funciona gracias al trabajo de millones de contribuyentes de @@LF07 [@@LF08]. El ojo, la cadena y los candados son iconos de @@LF09 [@@LF10]. Las fuentes usadas en los títulos son @@LF11 [@@LF12].",
+    "footer-pgp": "Esta es nuestra @@LT00 — Usala!",
+    "footer-note": "Tené en cuenta que solo los correos cifrados serán respondidos.",
+    "footer-your-key": "Envianos o decinos donde podemos conseguir tu llave.",
+    "footer-help": "Si necesitas ayuda con PGP, @@LF00 / @@LF01 / @@LF02.",
+    "at": "en",
+    "dot": "punto"
+  },
+  "links": {
+    "how-osm": [ "usar una que ya tengas", "crearte una cuenta" ],
+    "how-stats": [ "nodos de vigilancia" ],
+    "footer-pgp": [ "llave PGP" ]
+  }
+}

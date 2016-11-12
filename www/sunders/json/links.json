@@ -1,4 +1,4 @@
-[ { "listTitle": "English",
+[ { "listTitle": "eng",
     "sections": [
       { "sectionTitle": "", "isExpandable": false, "listEntries": [
         { "sourceText": "1984 Actionday", "href": "https://1984actionday.wordpress.com/", "linkText": "When will you fight back?" },
@@ -10,18 +10,26 @@
         { "sourceText": "2016-10-13 | The Intercept_", "href": "https://theintercept.com/2016/10/13/how-a-facial-recognition-mismatch-can-ruin-your-life/", "linkText": "How a Facial Recognition Mismatch Can Ruin Your Life" },
         { "sourceText": "2016-06-27 | sucuri BLOG", "href": "https://blog.sucuri.net/2016/06/large-cctv-botnet-leveraged-ddos-attacks.html", "linkText": "Large CCTV Botnet Leveraged in DDoS Attacks" }
       ] },
-      { "sectionTitle": "2015", "isExpandable": true, "listEntries": [
+      { "sectionTitle": "sect-eng-2015", "isExpandable": true, "listEntries": [
         { "sourceText": "2015-12-29 | 32C3", "href": "https://events.ccc.de/congress/2015/Fahrplan/events/7374.html", "linkText": "The architecture of a street level panopticum" }
       ] }
     ]
   },
-  { "listTitle": "German",
+  { "listTitle": "ger",
     "sections": [
       { "sectionTitle": "", "isExpandable": false, "listEntries": [
         { "sourceText": "AK Überwachung", "href": "http://www.ak-ueberwachung.org/", "linkText": "Arbeitskreis gegen Überwachung" },
         { "sourceText": "AK Vorrat, Ortsgruppe Hannover", "href": "https://wiki.vorratsdatenspeicherung.de/Ortsgruppen/Hannover/Videoueberwachung_in_Hannover", "linkText": "Videoüberwachung in Hannover" },
         { "sourceText": "dieDatenschützer Rhein-Main", "href": "https://ddrm.de/category/videouberwachung-2/", "linkText": "Kategoriearchiv: Videoüberwachung" },
         { "sourceText": "Kassel-Watch-Log", "href": "https://www.ks-watch.de/", "linkText": "Videoüberwachung im öffentlichen Raum Kassel" },
+        { "sourceText": "2016-11-11 | netzpolitik.org", "href": "https://netzpolitik.org/2016/innenministerium-will-videoueberwachung-in-diskotheken-erleichtern/", "linkText": "Innenministerium will Videoüberwachung in Diskotheken erleichtern" },
+        { "sourceText": "2016-11-11 | Digitale Gesellschaft", "href": "https://digitalegesellschaft.de/2016/11/videoueberwachung-anhoerung/", "linkText": "Mehr Videoüberwachung: Innenministerium führt Anhörung zu Referentenentwurf durch" },
+        { "sourceText": "2016-11-11 | heise online", "href": "https://www.heise.de/newsticker/meldung/Mehr-Videoueberwachung-und-Fussfesseln-fuer-Extremisten-Koalition-schnuert-neues-Sicherheitspaket-3463972.html", "linkText": "Mehr Videoüberwachung und Fußfesseln für Extremisten: Koalition schnürt neues Sicherheitspaket" },
+        { "sourceText": "2016-11-07 | netzpolitik.org", "href": "https://netzpolitik.org/2016/stellungnahme-zur-vorratsvideosammlung-verfassungsrechtlich-bedenklich/", "linkText": "Stellungnahme zur Vorratsvideosammlung: 'Verfassungsrechtlich bedenklich'" },
+        { "sourceText": "2016-11-07 | heise online", "href": "https://www.heise.de/newsticker/meldung/Datenschuetzer-protestieren-gegen-de-Maizieres-Plan-fuer-mehr-Videoueberwachung-3457955.html", "linkText": "Datenschützer protestieren gegen de Maizières Plan für mehr Videoüberwachung" },
+        { "sourceText": "2016-11-07 | netzpolitik.org", "href": "https://netzpolitik.org/2016/forscher-ueberlisten-gesichtserkennungssysteme-mit-bunten-brillen/", "linkText": "Forscher überlisten Gesichtserkennungssysteme mit bunten Brillen" },
+        { "sourceText": "2016-10-27 | netzpolitik.org", "href": "https://netzpolitik.org/2016/intelligente-videoueberwachung-regierung-will-folgen-der-grundrechtseingriffe-spaeter-reflektieren-vielleicht/", "linkText": "Intelligente Videoüberwachung: Regierung will Folgen der Grundrechtseingriffe später reflektieren – vielleicht." },
+        { "sourceText": "2016-10-27 | Digitale Gesellschaft", "href": "https://digitalegesellschaft.de/2016/10/videoueberwachung-weniger-grundrechte/", "linkText": "Ausweitung der Videoüberwachung: Nicht mehr Sicherheit, sondern weniger Grundrechte" },
         { "sourceText": "2016-10-26 | heise online", "href": "https://www.heise.de/newsticker/meldung/Streit-ueber-de-Maizieres-Plaene-fuer-mehr-Videoueberwachung-3361291.html", "linkText": "Streit über de Maizières Pläne für mehr Videoüberwachung" },
         { "sourceText": "2016-10-26 | netzpolitik.org", "href": "https://netzpolitik.org/2016/mehr-videoueberwachung-minister-de-maiziere-plant-gesetzesaenderung/", "linkText": "Mehr Videoüberwachung: Minister de Maizière plant Gesetzesänderung" },
         { "sourceText": "2016-10-20 | heise online", "href": "https://www.heise.de/newsticker/meldung/USA-Haelfte-der-Buerger-fuer-Gesichtserkennung-erfasst-3355185.html", "linkText": "USA: Hälfte der Bürger für Gesichtserkennung erfasst" },
