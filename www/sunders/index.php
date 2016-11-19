@@ -63,21 +63,25 @@
     <div id="map"></div>
 
     <div class="topbar anchorlinkbar">
-      <a title="what this is about" href="#what"><img src="<?php echo $pathToWebFolder.'images/link-what-'.$initialLanguage.'.png' ?>" alt="what this is about"></a>
-      <a title="how to participate" href="#how"><img src="<?php echo $pathToWebFolder.'images/link-how-'.$initialLanguage.'.png' ?>" alt="how to participate"></a>
-      <a title="where to get more info" href="#where"><img src="<?php echo $pathToWebFolder.'images/link-where-'.$initialLanguage.'.png' ?>" alt="where to get more info"></a>
+      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'what-alt', [], [], []) ?>" href="#what">
+        <div class="bar-button what" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-what-'.$initialLanguage.'.png\');' ?>"></div>
+      </a>
+      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'how-alt', [], [], []) ?>" href="#how">
+        <div class="bar-button how" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-how-'.$initialLanguage.'.png\');' ?>"></div>
+      </a>
+      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'where-alt', [], [], []) ?>" href="#where">
+        <div class="bar-button where" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-where-'.$initialLanguage.'.png\');' ?>"></div>
+      </a>
     </div>
 
-    <div class="topbar permalinkbar">
-      <form>
-        <button class="permalink" type="button" id="permalinkButton"></button>
-        <?php echo '<input class="permalink" id="permalinkField" value=" &lt;&lt; '.translate($i18nCommon, $i18nCommonDefault, 'permalink-alt', [], [], []).'">'; ?>
-
-        <?php
-          addListLanguages($initialLanguage);
-        ?>
-
-      </form>
+    <div class="topbar buttonbar">
+      <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
+      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/statistics.php' ?>">
+        <div class="bar-button stats"></div>
+      </a>
+      <?php
+        addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault);
+      ?>
     </div>
 
     <div class="slider">
@@ -100,7 +104,7 @@
 
       <div id="what"></div>
       <div class="slider-item slider-title">
-        <img src="<?php echo $pathToWebFolder.'images/title-what-'.$initialLanguage.'.png' ?>" alt="what this is about">
+        <img src="<?php echo $pathToWebFolder.'images/title-what-'.$initialLanguage.'.png' ?>" alt="<?php echo translate($i18nCommon, $i18nCommonDefault, 'what-alt', [], [], []) ?>">
       </div>
       <div class="slider-item">
         <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'what-show', [], [], []); ?></p>
@@ -115,7 +119,7 @@
 
       <div id="how"></div>
       <div class="slider-item slider-title">
-        <img src="<?php echo $pathToWebFolder.'images/title-how-'.$initialLanguage.'.png' ?>" alt="how to participate">
+        <img src="<?php echo $pathToWebFolder.'images/title-how-'.$initialLanguage.'.png' ?>" alt="<?php echo translate($i18nCommon, $i18nCommonDefault, 'how-alt', [], [], []) ?>">
       </div>
       <div class="slider-item">
         <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'how-osm', ['https://www.openstreetmap.org/login', 'https://www.openstreetmap.org/user/new'], [['https://www.openstreetmap.org'], ['OpenStreetMap']], []); ?></p>
@@ -135,13 +139,6 @@
         <p><br><br>
 
       <?php
-        if (USE_STATISTICS) {
-          echo translate($i18nCommon, $i18nCommonDefault, 'how-stats', [$pathToWebFolder.$initialLanguage.'/statistics.php'], [], []).'</p>
-                </div>
-                <div class="slider-item">
-                  <p>';
-        }
-
         echo translate($i18nCommon, $i18nCommonDefault, 'how-fork', [], [['https://github.com/kamba4/sunders'], ['GitHub']], []);
       ?>
 
@@ -150,7 +147,7 @@
 
       <div id="where"></div>
       <div class="slider-item slider-title">
-        <img src="<?php echo $pathToWebFolder.'images/title-where-'.$initialLanguage.'.png' ?>" alt="where to get more info">
+        <img src="<?php echo $pathToWebFolder.'images/title-where-'.$initialLanguage.'.png' ?>" alt="<?php echo translate($i18nCommon, $i18nCommonDefault, 'where-alt', [], [], []) ?>">
       </div>
       <div class="slider-item">
         <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'where-sites', [], [], []); ?></p>
@@ -209,13 +206,13 @@
             if ($initialLanguage == 'de') {
               echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', ['https://netzpolitik.org/2013/anleitung-so-verschlusselt-ihr-eure-e-mails-mit-pgp/'], [], []);
             } elseif ($initialLanguage == 'es') {
-              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/es/module/como-usar-pgp-para-windows-pc', 'https://ssd.eff.org/es/module/c%C3%B3mo-usar-pgp-para-mac-os-x', 'https://ssd.eff.org/es/module/como-usar-pgp-para-linux'], ['Windows', 'macOS', 'Linux']], []);
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/es/module/como-usar-pgp-para-windows-pc', 'https://ssd.eff.org/es/module/c%C3%B3mo-usar-pgp-para-mac-os-x', 'https://ssd.eff.org/es/module/como-usar-pgp-para-linux'], ['Windows', 'macOS', 'GNU/Linux']], []);
             } elseif ($initialLanguage == 'fr') {
-              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/fr/module/pgp-sous-windows-le-ba-ba', 'https://ssd.eff.org/fr/module/guide-dutilisation-de-pgp-pour-mac-os-x', 'https://ssd.eff.org/fr/module/pgp-sous-linux-le-ba-ba'], ['Windows', 'macOS', 'Linux']], []);
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/fr/module/pgp-sous-windows-le-ba-ba', 'https://ssd.eff.org/fr/module/guide-dutilisation-de-pgp-pour-mac-os-x', 'https://ssd.eff.org/fr/module/pgp-sous-linux-le-ba-ba'], ['Windows', 'macOS', 'GNU/Linux']], []);
             } elseif ($initialLanguage == 'ru') {
-              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-windows', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-mac', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-linux'], ['Windows', 'macOS', 'Linux']], []);
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-windows', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-mac', 'https://ssd.eff.org/ru/module/%D1%80%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE-pgp-%D0%B4%D0%BB%D1%8F-linux'], ['Windows', 'macOS', 'GNU/Linux']], []);
             } else {
-              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/en/module/how-use-pgp-windows', 'https://ssd.eff.org/en/module/how-use-pgp-mac-os-x', 'https://ssd.eff.org/en/module/how-use-pgp-linux'], ['Windows', 'macOS', 'Linux']], []);
+              echo translate($i18nCommon, $i18nCommonDefault, 'footer-help', [], [['https://ssd.eff.org/en/module/how-use-pgp-windows', 'https://ssd.eff.org/en/module/how-use-pgp-mac-os-x', 'https://ssd.eff.org/en/module/how-use-pgp-linux'], ['Windows', 'macOS', 'GNU/Linux']], []);
             }
           ?>
         </i>

@@ -33,7 +33,7 @@
 
     <div class="page">
       <form class="header form">
-        <a href="<?php echo $pathToWebFolder.'index.php' ?>"><img src="<?php echo $pathToWebFolder.'images/title-sunders.png' ?>" alt="Surveillance under Surveillance"></a>
+        <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>"><img src="<?php echo $pathToWebFolder.'images/title-sunders.png' ?>" alt="Surveillance under Surveillance"></a>
         <?php getButtongroupYear($statYear); ?>
         <?php getButtongroupMonth($statYear, $statMonth, $i18nStatistics, $i18nStatisticsDefault); ?>
       </form>
@@ -42,7 +42,7 @@
       </div>
       <div class="info text-small"><?php echo translate($i18nStatistics, $i18nStatisticsDefault, 'description', [], [], []); ?></div>
       <div class="footer">
-        <a href="<?php echo $pathToWebFolder.'index.php' ?>"><?php echo translate($i18nStatistics, $i18nStatisticsDefault, 'footer-text', [], [], []); ?></a>
+        <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>"><?php echo translate($i18nStatistics, $i18nStatisticsDefault, 'footer-text', [], [], []); ?></a>
       </div>
     </div>
 

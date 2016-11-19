@@ -1,8 +1,9 @@
 {
   "texts": {
     "eng": "English",
-      "sect-eng-2015": "2015",
     "ger": "German",
+    "sect-2015": "2015",
+    "sect-2016": "2016",
     "secure-alt": "Secure Connection",
     "insecure-alt": "Insecure Connection!"
   }

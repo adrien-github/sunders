@@ -64,16 +64,6 @@ function permalink(switchToLanguage) {
   window.location = getPermalink(switchToLanguage);
 }
 
-// Display the permalink URL.
-function displayPermalink() {
-  document.getElementById('permalinkField').value = getPermalink(null);
-}
-
-// Button to display the permalink URL.
-window.onload = function() {
-  document.getElementById('permalinkButton').onclick = displayPermalink;
-}
-
 // Add plots to map.
 function addPlots() {
   var bounds = map.getBounds();

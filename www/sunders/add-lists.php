@@ -178,29 +178,30 @@
     echo   '</div>';
   }
 
-  function addListLanguages($initialLanguage) {
+  function addListLanguages($initialLanguage, $i18n, $i18nDefault) {
     global $pathToWebFolder;
 
-    $supportedLanguages = [ 'de', 'en', 'es', 'fr', 'ru' ];
+    $supportedLanguages = [
+      'de' => 'deutsch',
+      'en' => 'english',
+      'es' => 'espa&#x00F1;ol',
+      'fr' => 'fran&#x00E7;ais',
+      'ru' => '&#x0440;&#x0443;&#x0441;&#x0441;&#x043A;&#x0438;&#x0439;'
+    ];
 
-    echo '<ul id="language">
+    echo '<ul class="bar-button" id="language">
             <li>
-              &nbsp;
+              <div title="'.translate($i18n, $i18nDefault, 'language-button-alt', [], [], []).'">&nbsp;</div>
               <ul>';
 
-    foreach ($supportedLanguages as $language) {
+    foreach ($supportedLanguages as $languageID => $languageDisplay) {
       $classLanguangeCurrent = '';
-      $languageDisplay = $language;
 
-      if ($language == $initialLanguage) {
+      if ($languageID == $initialLanguage) {
         $classLanguangeCurrent = ' class="language-current"';
       }
 
-      if ($language == 'ru') {
-        $languageDisplay = '&#x0440;&#x0443;'; // cyrillic for 'ru'
-      }
-
-      echo '    <a href="#" onClick="permalink(\''.$language.'\');return false;"><li'.$classLanguangeCurrent.'>'.$languageDisplay.'</li></a>';
+      echo '    <li'.$classLanguangeCurrent.'><a href="#" onClick="permalink(\''.$languageID.'\');return false;">'.$languageDisplay.'</a></li>';
     }
 
     echo '    </ul>

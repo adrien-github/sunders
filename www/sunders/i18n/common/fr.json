@@ -1,6 +1,11 @@
 {
   "texts": {
-    "permalink-alt": "",
+    "what-alt": "",
+    "how-alt": "",
+    "where-alt": "",
+    "permalink-button-alt": "",
+    "stats-button-alt": "",
+    "language-button-alt": "",
     "subtitle": "",
     "translation": "This site has not been translated yet. You can help to offer this site in FRENCH by sending us your translation via email. Please scroll down for our address. Thanks a lot!",
     "what-show": "",
@@ -8,7 +13,6 @@
     "how-osm": "",
     "how-update": "",
     "how-keyval": "",
-    "how-stats": "",
     "how-fork": "",
     "where-sites": "",
     "footer-credits": "",
@@ -21,7 +25,6 @@
   },
   "links": {
     "how-osm": [ "" ],
-    "how-stats": [ "" ],
     "footer-pgp": [ "" ],
     "footer-help": [ "" ]
   }
