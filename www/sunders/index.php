@@ -52,6 +52,7 @@
     <link rel="stylesheet" href="<?php echo $pathToWebFolder.'Leaflet/leaflet.css' ?>">
     <link rel="stylesheet" href="<?php echo $pathToWebFolder.'Leaflet.label/leaflet.label.css' ?>">
     <link rel="stylesheet" href="<?php echo $pathToWebFolder.'css/sunders.css' ?>">
+    <link rel="stylesheet" href="<?php echo $pathToWebFolder.'css/spinner.css' ?>">
   </head>
   <body>
 
@@ -75,13 +76,31 @@
     </div>
 
     <div class="topbar buttonbar">
+
+      <div class="search-group">
+        <input class="search-button-toggle" id="searchID" type="checkbox">
+        <label title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'search-button-alt', [], [], []) ?>" class="bar-button search" for="searchID" id="searchButton"></label>
+        <div class="search-overlay">
+          <div class="close" onClick="closeSearchOverlay();return false;"></div>
+          <form class="search-field-row" onsubmit="searchLocation();return false;">
+            <input id="search-input" type="text" autofocus>
+            <button class="search-button" type="submit"></button>
+          </form>
+          <div id="search-spinner"></div>
+          <div id="search-results-list"></div>
+        </div>
+      </div>
+
       <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
+
       <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/statistics.php' ?>">
         <div class="bar-button stats"></div>
       </a>
+
       <?php
         addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault);
       ?>
+
     </div>
 
     <div class="slider">

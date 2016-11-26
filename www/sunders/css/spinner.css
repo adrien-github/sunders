@@ -1,0 +1,171 @@
+.spinner-bar {
+	display: flex;
+	justify-content: space-between;
+	width: 360px;
+	margin-top: 20px;
+}
+
+@keyframes spinner1 {
+	0% { opacity: 1; }
+	5% { opacity: 1; }
+	10% { opacity: 0.2; }
+	90% { opacity: 0.2; }
+	95% { opacity: 1; }
+	100% { opacity: 1; }
+}
+
+@keyframes spinner2 {
+	0% { opacity: 0.2; }
+	5% { opacity: 1; }
+	10% { opacity: 1; }
+	15% { opacity: 0.2; }
+	85% { opacity: 0.2; }
+	90% { opacity: 1; }
+	95% { opacity: 1; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner3 {
+	0% { opacity: 0.2; }
+	5% { opacity: 0.2; }
+	10% { opacity: 1; }
+	15% { opacity: 1; }
+	20% { opacity: 0.2; }
+	80% { opacity: 0.2; }
+	85% { opacity: 1; }
+	90% { opacity: 1; }
+	95% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner4 {
+	0% { opacity: 0.2; }
+	10% { opacity: 0.2; }
+	15% { opacity: 1; }
+	20% { opacity: 1; }
+	25% { opacity: 0.2; }
+	75% { opacity: 0.2; }
+	80% { opacity: 1; }
+	85% { opacity: 1; }
+	90% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner5 {
+	0% { opacity: 0.2; }
+	15% { opacity: 0.2; }
+	20% { opacity: 1; }
+	25% { opacity: 1; }
+	30% { opacity: 0.2; }
+	70% { opacity: 0.2; }
+	75% { opacity: 1; }
+	80% { opacity: 1; }
+	85% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner6 {
+	0% { opacity: 0.2; }
+	20% { opacity: 0.2; }
+	25% { opacity: 1; }
+	30% { opacity: 1; }
+	35% { opacity: 0.2; }
+	65% { opacity: 0.2; }
+	70% { opacity: 1; }
+	75% { opacity: 1; }
+	80% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner7 {
+	0% { opacity: 0.2; }
+	25% { opacity: 0.2; }
+	30% { opacity: 1; }
+	35% { opacity: 1; }
+	40% { opacity: 0.2; }
+	60% { opacity: 0.2; }
+	65% { opacity: 1; }
+	70% { opacity: 1; }
+	75% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner8 {
+	0% { opacity: 0.2; }
+	30% { opacity: 0.2; }
+	35% { opacity: 1; }
+	40% { opacity: 1; }
+	45% { opacity: 0.2; }
+	55% { opacity: 0.2; }
+	60% { opacity: 1; }
+	65% { opacity: 1; }
+	70% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner9 {
+	0% { opacity: 0.2; }
+	35% { opacity: 0.2; }
+	40% { opacity: 1; }
+	45% { opacity: 1; }
+	50% { opacity: 0.2; }
+	55% { opacity: 1; }
+	60% { opacity: 1; }
+	65% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+@keyframes spinner10 {
+	0% { opacity: 0.2; }
+	40% { opacity: 0.2; }
+	45% { opacity: 1; }
+	55% { opacity: 1; }
+	60% { opacity: 0.2; }
+	100% { opacity: 0.2; }
+}
+
+.spinner {
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.spinner1 {
+	animation-name: spinner1;
+}
+
+.spinner2 {
+	animation-name: spinner2;
+}
+
+.spinner3 {
+	animation-name: spinner3;
+}
+
+.spinner4 {
+	animation-name: spinner4;
+}
+
+.spinner5 {
+	animation-name: spinner5;
+}
+
+.spinner6 {
+	animation-name: spinner6;
+}
+
+.spinner7 {
+	animation-name: spinner7;
+}
+
+.spinner8 {
+	animation-name: spinner8;
+}
+
+.spinner9 {
+	animation-name: spinner9;
+}
+
+.spinner10 {
+	animation-name: spinner10;
+}

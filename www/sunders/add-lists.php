@@ -201,7 +201,7 @@
         $classLanguangeCurrent = ' class="language-current"';
       }
 
-      echo '    <li'.$classLanguangeCurrent.'><a href="#" onClick="permalink(\''.$languageID.'\');return false;">'.$languageDisplay.'</a></li>';
+      echo '    <a href="#" onClick="permalink(\''.$languageID.'\');return false;"><li'.$classLanguangeCurrent.'>'.$languageDisplay.'</li></a>';
     }
 
     echo '    </ul>
