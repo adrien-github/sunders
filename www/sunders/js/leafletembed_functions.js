@@ -65,10 +65,15 @@ function permalink(switchToLanguage) {
   window.location = getPermalink(switchToLanguage);
 }
 
+function displaySearchOverlay() {
+  document.getElementById('search-overlay').style.display = 'block';
+}
+
 // Close the search overlay.
 function closeSearchOverlay() {
-  document.getElementById('searchID').checked = false;
-  document.getElementById('search-results-list').innerHTML = '';
+  document.getElementById('search-overlay').style.display = 'none';
+  document.getElementById('search-results-overlay').style.display = 'none';
+  document.getElementById('buttonbar').style.bottom = '';
 }
 
 // Search for possible locations
@@ -76,24 +81,29 @@ function searchLocation(maxResults) {
   var searchString = document.getElementById('search-input').value;
 
   if (searchString) {
+
+    document.getElementById('buttonbar').style.bottom = 0;
+    document.getElementById('search-results-overlay').style.display = 'block';
+
     var spinnerDiv = '<div class="spinner-bar">';
     for (var i=1; i<=10; i++) {
       spinnerDiv += '<div class="spinner spinner' + i + '">&#x25AC;&#x25AC;</div>';
     }
     spinnerDiv += '</div>';
 
-    document.getElementById('search-results-list').innerHTML = '';
+    document.getElementById('search-results-list-block').style.display = 'none';
     document.getElementById('search-spinner').innerHTML = spinnerDiv;
+    document.getElementById('search-spinner-block').style.display = 'block';
 
     if (maxResults) {
       searchLimit = maxResults;
     } else {
-      // Search one more then required to check if there are more results and a 'more' button is required.
+      // Search one more then required to check if there are more results and a 'next' button is required.
       searchLimit = 11;
     }
 
     var searchScript = document.createElement('script');
-    searchScript.src = 'https://nominatim.openstreetmap.org/search.php?q=' + searchString + '&format=json&json_callback=parseResult&limit=' + limit;
+    searchScript.src = 'https://nominatim.openstreetmap.org/search.php?q=' + searchString + '&format=json&json_callback=parseResult&limit=' + searchLimit;
     document.body.appendChild(searchScript);
   }
 }
@@ -136,8 +146,9 @@ function parseResult(response) {
     searchResultDivs += '<div class="search-more search-next" onClick="searchLocation(' + nextSearchLimit + ');return false;"></div>'
   }
 
-  document.getElementById('search-spinner').innerHTML = '';
+  document.getElementById('search-spinner-block').style.display = 'none';
   document.getElementById('search-results-list').innerHTML = searchResultDivs;
+  document.getElementById('search-results-list-block').style.display = 'block';
 }
 
 // Open map for coordinates

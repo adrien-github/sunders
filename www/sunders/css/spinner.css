@@ -2,7 +2,6 @@
 	display: flex;
 	justify-content: space-between;
 	width: 360px;
-	margin-top: 20px;
 }
 
 @keyframes spinner1 {

@@ -63,43 +63,46 @@
 
     <div id="map"></div>
 
-    <div class="topbar anchorlinkbar">
-      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'what-alt', [], [], []) ?>" href="#what">
-        <div class="bar-button what" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-what-'.$initialLanguage.'.png\');' ?>"></div>
-      </a>
-      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'how-alt', [], [], []) ?>" href="#how">
-        <div class="bar-button how" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-how-'.$initialLanguage.'.png\');' ?>"></div>
-      </a>
-      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'where-alt', [], [], []) ?>" href="#where">
-        <div class="bar-button where" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-where-'.$initialLanguage.'.png\');' ?>"></div>
-      </a>
+    <div class="slider-overlay" id="anchorbar">
+      <div class="topbar anchorbar">
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'what-alt', [], [], []) ?>" href="#what">
+          <div class="bar-button what" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-what-'.$initialLanguage.'.png\');' ?>"></div>
+        </a>
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'how-alt', [], [], []) ?>" href="#how">
+          <div class="bar-button how" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-how-'.$initialLanguage.'.png\');' ?>"></div>
+        </a>
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'where-alt', [], [], []) ?>" href="#where">
+          <div class="bar-button where" style="<?php echo 'background-image: url(\''.$pathToWebFolder.'images/link-where-'.$initialLanguage.'.png\');' ?>"></div>
+        </a>
+      </div>
     </div>
 
-    <div class="topbar buttonbar">
+    <div class="slider-overlay" id="buttonbar">
+      <div class="topbar buttonbar">
+        <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'search-button-alt', [], [], []) ?>" class="bar-button search" onClick="displaySearchOverlay();return false;"></div>
+        <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/statistics.php' ?>">
+          <div class="bar-button stats"></div>
+        </a>
+        <?php addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault); ?>
+      </div>
 
-      <div class="search-group">
-        <input class="search-button-toggle" id="searchID" type="checkbox">
-        <label title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'search-button-alt', [], [], []) ?>" class="bar-button search" for="searchID" id="searchButton"></label>
-        <div class="search-overlay">
-          <div class="close" onClick="closeSearchOverlay();return false;"></div>
-          <form class="search-field-row" onsubmit="searchLocation();return false;">
-            <input id="search-input" type="text" autofocus>
-            <button class="search-button" type="submit"></button>
-          </form>
+      <div id="search-overlay">
+        <div class="close" onClick="closeSearchOverlay();return false;"></div>
+        <form class="search-field-row" onsubmit="searchLocation();return false;">
+          <input id="search-input" type="text" autofocus>
+          <button class="search-button" type="submit"></button>
+        </form>
+      </div>
+
+      <div id="search-results-overlay">
+        <div id="search-spinner-block">
           <div id="search-spinner"></div>
+        </div>
+        <div id="search-results-list-block">
           <div id="search-results-list"></div>
         </div>
       </div>
-
-      <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
-
-      <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/statistics.php' ?>">
-        <div class="bar-button stats"></div>
-      </a>
-
-      <?php
-        addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault);
-      ?>
 
     </div>
 
