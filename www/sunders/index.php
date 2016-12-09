@@ -254,6 +254,7 @@
     <script src="<?php echo $pathToWebFolder.'Leaflet.label/leaflet.label.js' ?>"></script>
     <script src="<?php echo $pathToWebFolder.'js/leafletembed_icons.js' ?>"></script>
     <script src="<?php echo $pathToWebFolder.'js/leafletembed_functions.js' ?>"></script>
+    <script src="<?php echo $pathToWebFolder.'js/search.js' ?>"></script>
 
   </body>
 </html>
