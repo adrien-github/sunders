@@ -223,7 +223,6 @@ body {
   top: 136px;
   bottom: 0;
   width: 470px;
-  padding: 20px 0;
   overflow-y: auto;
   background: #0192d9;
   background-color: rgba(1, 146, 217, 0.9);
@@ -232,6 +231,7 @@ body {
 
 #search-spinner-block {
   display: none;
+  padding: 20px 0;
 }
 
 #search-spinner {
@@ -241,6 +241,7 @@ body {
 
 #search-results-list-block {
   display: none;
+  padding: 20px 0;
 }
 
 #search-results-list {
