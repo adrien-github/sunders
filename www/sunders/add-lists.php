@@ -137,13 +137,14 @@
   // Convert the content of the links JSON file to HTML.
   function addListLinks($jsonPath, $i18n, $i18nDefault) {
     global $pathToWebFolder;
+    $expandSectionCounter = 0;
 
     $decodedJSON = getDecodedJSON($jsonPath);
     echo   '<div class="slider-item slider-list">';
 
     // Loop over the lists to display.
     foreach($decodedJSON as $listObject) {
-      $expandSectionCounter = 0;
+      // $expandSectionCounter = 0;
       echo   '<div class="slider-list-title">'.translate($i18n, $i18nDefault, $listObject->{'listTitle'}, [], [], []).'</div>';
 
       // Loop over the sections of the current list.
