@@ -144,7 +144,6 @@
 
     // Loop over the lists to display.
     foreach($decodedJSON as $listObject) {
-      // $expandSectionCounter = 0;
       echo   '<div class="slider-list-title">'.translate($i18n, $i18nDefault, $listObject->{'listTitle'}, [], [], []).'</div>';
 
       // Loop over the sections of the current list.
