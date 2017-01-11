@@ -33,7 +33,7 @@ function searchLocation(maxResults) {
     if (maxResults) {
       searchLimit = maxResults;
     } else {
-      // Search one more then required to check if there are more results and a 'next' button is required.
+      // Search one more than required to check if there are more results and a 'next' button is required.
       searchLimit = 11;
     }
 
