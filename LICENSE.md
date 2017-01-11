@@ -1,9 +1,11 @@
-**Surveillance under Surveillance** uses code, data and fonts that are licensed under different licenses:
+**Surveillance under Surveillance** uses code, data, icons and fonts that are licensed under different licenses:
 
 * Code of [osmcamera](https://github.com/khris78/osmcamera) — [CC-BY-SA / MIT / GPLv3 / WTFPL](./www/sunders/files/license_osmcamera.txt)
 * Code of [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) — [BSD-2-Clause](./www/sunders/files/license_Leaflet.txt)
 * Code of [Leaflet/Leaflet.label](https://github.com/Leaflet/Leaflet.label) — [MIT](./www/sunders/files/license_Leaflet.label.txt)
-* Data of [OpenStreetMap](https://www.openstreetmap.org/) — [CC BY-SA](https://www.openstreetmap.org/copyright)
+* Data of [OpenStreetMap](https://www.openstreetmap.org/) — [ODbL / CC BY-SA](https://www.openstreetmap.org/copyright)
+* Data of [OpenStreetMap Nominatim](https://nominatim.openstreetmap.org/) — [ODbL](https://www.openstreetmap.org/copyright)
+* Data of [GeoNames](https://www.geonames.org/) — [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 * Icons of [Font Awesome](http://fontawesome.io/) — [SIL OFL 1.1 / MIT / CC BY 3.0](http://fontawesome.io/license/)
 * Font [Grabstein Grotesk](https://fontlibrary.org/de/font/grabstein-grotesk) — [OLF](http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
 
