@@ -178,6 +178,46 @@
     echo   '</div>';
   }
 
+  // Convert the content of the credits and licenses JSON file to HTML.
+  function addListCredits($jsonPath, $i18n, $i18nDefault) {
+    global $pathToWebFolder;
+
+    $decodedJSON = getDecodedJSON($jsonPath);
+
+    // Loop over the lists to display.
+    foreach($decodedJSON as $listObject) {
+      echo   '<div class="slider-credits-title">'
+                .translate($i18n, $i18nDefault, $listObject->{'listTitle'}, [], [], []).'
+              </div>';
+
+      // Loop over the entries of the current list.
+      foreach($listObject->{'listEntries'} as $listEntryObject) {
+        echo   '<div class="slider-credit-type">'
+                  .translate($i18n, $i18nDefault, $listEntryObject->{'type'}, [], [], []).'
+                </div>';
+
+        // Loop over the credits of the current list entry.
+        foreach($listEntryObject->{'credits'} as $credit) {
+          $hrefCredit = $credit->{'href-credit'};
+          $hrefLicense = $credit->{'href-license'};
+
+          if (substr($hrefCredit, 0, 4) != 'http') {
+            $hrefCredit = $pathToWebFolder.$hrefCredit;
+          }
+
+          if (substr($hrefLicense, 0, 4) != 'http') {
+            $hrefLicense = $pathToWebFolder.$hrefLicense;
+          }
+
+          echo   '<div>
+                    <a href="'.$hrefCredit.'" target="_blank">'.htmlentities($credit->{'credit'}).'</a> [<a href="'.$hrefLicense.'" target="_blank">'.htmlentities($credit->{'license'}).'</a>]
+                  </div>';
+        }
+      }
+    }
+  }
+
+  // Create a HTML list that contains the supported languages (i18n).
   function addListLanguages($initialLanguage, $i18n, $i18nDefault) {
     global $pathToWebFolder;
 

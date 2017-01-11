@@ -1,0 +1,11 @@
+{
+  "texts": {
+    "title-credits": "Credits & Licenses",
+    "type-idea": "Idea and code base",
+    "type-js": "Javascript plugins",
+    "type-map": "Map and surveillance node data",
+    "type-service": "Web services",
+    "type-icon": "Icons",
+    "type-font": "Font for titles"
+  }
+}

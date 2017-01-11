@@ -1,0 +1,11 @@
+{
+  "texts": {
+    "title-credits": "Danksagungen & Lizenzen",
+    "type-idea": "Idee und Codebasis",
+    "type-js": "Javascipt-Erweiterungen",
+    "type-map": "Karte und Daten zu Überwachungseinträgen",
+    "type-service": "Webdienste",
+    "type-icon": "Symbole",
+    "type-font": "Schriftart für Überschriften"
+  }
+}

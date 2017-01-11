@@ -484,6 +484,15 @@ body {
   text-align: center;
 }
 
+.slider-credits-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.slider-credit-type {
+  padding-top: 6px;
+}
+
 /* Label with number of composite cameras. */
 .composite-cameras-label {
   background-color: rgba(1, 146, 217, 0.66);

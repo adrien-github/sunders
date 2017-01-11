@@ -1,0 +1,23 @@
+[ { "listTitle": "title-credits",
+    "listEntries": [
+      { "type":    "type-idea",
+        "credits": [
+          { "credit": "osmcamera by khris78", "href-credit": "https://github.com/khris78/osmcamera", "license": "CC-BY-SA / MIT / GPLv3 / WTFPL", "href-license": "files/license_osmcamera.txt" } ] },
+      { "type": "type-js",
+        "credits": [
+          { "credit": "Leaflet", "href-credit": "https://github.com/Leaflet/Leaflet", "license": "BSD-2-Clause", "href-license": "files/license_Leaflet.txt" },
+          { "credit": "Leaflet.label", "href-credit": "https://github.com/Leaflet/Leaflet.label", "license": "MIT", "href-license": "files/license_Leaflet.label.txt" } ] },
+      { "type": "type-map",
+        "credits": [
+          { "credit": "OpenStreetMap contributors", "href-credit": "https://www.openstreetmap.org", "license": "ODbL / CC BY-SA", "href-license": "https://www.openstreetmap.org/copyright" } ] },
+      { "type": "type-service",
+        "credits": [
+          { "credit": "OpenStreetMap Nominatim", "href-credit": "https://nominatim.openstreetmap.org/", "license": "ODbL", "href-license": "https://www.openstreetmap.org/copyright" },
+          { "credit": "GeoNames", "href-credit": "https://www.geonames.org/", "license": "CC BY 3.0", "href-license": "https://creativecommons.org/licenses/by/3.0/" } ] },
+      { "type": "type-icon",
+        "credits": [ {
+          "credit": "Font Awesome", "href-credit": "http://fontawesome.io", "license": "SIL OFL 1.1 / MIT / CC BY 3.0", "href-license": "http://fontawesome.io/license/" } ] },
+      { "type": "type-font",
+        "credits": [ {
+          "credit": "Grabstein Grotesk", "href-credit": "https://fontlibrary.org/de/font/grabstein-grotesk", "license": "OLF", "href-license": "http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL" } ] } ] }
+]

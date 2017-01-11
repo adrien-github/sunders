@@ -182,38 +182,14 @@
       <div class="slider-item slider-footer text-small">
         &#x2756; &#x2756; &#x2756;
         <br><br><br>
-        <p><?php echo translate($i18nCommon, $i18nCommonDefault, 'footer-credits', [], [
-            [
-              'https://github.com/khris78/osmcamera',
-              $pathToWebFolder.'files/license_osmcamera.txt',
-              'https://github.com/khris78',
-              'https://github.com/Leaflet/Leaflet',
-              $pathToWebFolder.'files/license_Leaflet.txt',
-              'https://github.com/Leaflet/Leaflet.label',
-              $pathToWebFolder.'files/license_Leaflet.label.txt',
-              'https://www.openstreetmap.org',
-              'https://www.openstreetmap.org/copyright',
-              'http://fontawesome.io',
-              'http://fontawesome.io/license/',
-              'https://fontlibrary.org/de/font/grabstein-grotesk',
-              'http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL'
-            ], [
-              'osmcamera',
-              'CC-BY-SA / MIT / GPLv3 / WTFPL',
-              'khris78',
-              'Leaflet/Leaflet',
-              'BSD-2-Clause',
-              'Leaflet/Leaflet.label',
-              'MIT',
-              'OpenStreetMap',
-              'CC BY-SA',
-              'Font Awesome',
-              'SIL OFL 1.1 / MIT / CC BY 3.0',
-              'Grabstein Grotesk',
-              'OLF'
-            ]
-          ], []); ?></p>
+
+        <?php
+          addListCredits($pathToWebFolder.'json/credits.json', $i18nCredits, $i18nCreditsDefault);
+        ?>
+
         <br><br>
+        &#x2756;
+        <br><br><br>
         &#x041C;&#x0410;&#x041A;&#x0421; &#x041A;&#x0410;&#x041C;&#x0412;&#x0410;&#x0427;<br>
         Aljoscha Rompe Laan 5<br>
         2517 AR Den Haag<br>

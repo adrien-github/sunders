@@ -1,0 +1,11 @@
+{
+  "texts": {
+    "title-credits": "Agradecimientos & Licencias",
+    "type-idea": "Idea e código base",
+    "type-js": "Javascript complementos",
+    "type-map": "Mapa e datos de nodos de vigilancia",
+    "type-service": "Servicios web",
+    "type-icon": "Iconos",
+    "type-font": "Tipo de letra en títulos"
+  }
+}

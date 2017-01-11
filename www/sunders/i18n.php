@@ -3,6 +3,7 @@
   $i18nLinks      = getI18nArray('links', $initialLanguage);
   $i18nManual     = getI18nArray('manual', $initialLanguage);
   $i18nSymbology  = getI18nArray('symbology', $initialLanguage);
+  $i18nCredits    = getI18nArray('credits', $initialLanguage);
   $i18nStatistics = getI18nArray('statistics', $initialLanguage);
 
   if ($initialLanguage != DEFAULT_LANGUAGE) {
@@ -10,12 +11,14 @@
     $i18nLinksDefault       = getI18nArray('links', DEFAULT_LANGUAGE);
     $i18nManualDefault      = getI18nArray('manual', DEFAULT_LANGUAGE);
     $i18nSymbologyDefault   = getI18nArray('symbology', DEFAULT_LANGUAGE);
+    $i18nCreditsDefault     = getI18nArray('credits', DEFAULT_LANGUAGE);
     $i18nStatisticsDefault  = getI18nArray('statistics', DEFAULT_LANGUAGE);
   } else {
     $i18nCommonDefault      = $i18nCommon;
     $i18nLinksDefault       = $i18nLinks;
     $i18nManualDefault      = $i18nManual;
     $i18nSymbologyDefault   = $i18nSymbology;
+    $i18nCreditsDefault     = $i18nCredits;
     $i18nStatisticsDefault  = $i18nStatistics;
   }
 
