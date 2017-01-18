@@ -125,13 +125,17 @@ If you like to run Surveillance under Surveillance on your own LAMP or LNMP serv
 
     `mysql camera -h localhost -u camera --password=[camera user password] < addStatistics.sql`
 
-  - Open the file **~/sunders/update_cameras/config.php** and change the value of **USE_STATISTICS** from **false** to **true**.
+  - Open the file **~/sunders/update_cameras/config.php**. Change the value of **USE_STATISTICS** from **false** to **true** and enter the username of your GeoNames account at **WEBSERVICE_USER**.
 
     `define('USE_STATISTICS', true);`
 
   - Open the file **/var/www/sunders/config.php** and change the value of **USE_STATISTICS** from **false** to **true**.
 
     `define('USE_STATISTICS', true);`
+
+  - Schedule automatic statistics updates by adding this new line to your crontab. Enter your preferred schedule values, e.g. `42 * * * *` to run the update at every 42nd minute past every hour.
+
+    `42 * * * * /home/[user]/sunders/update_cameras/update_statistics.sh > /dev/null 2>&1`
 
   - Check the statistics by entering the URL of the visualization site (e.g. https://myserver/sunders/statistics.php) into your browser.
 

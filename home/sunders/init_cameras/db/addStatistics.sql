@@ -1,31 +1,23 @@
 CREATE TABLE statistics (
-  id BIGINT PRIMARY KEY,
+  id BIGINT REFERENCES position ON DELETE CASCADE,
   ts VARCHAR(20),
   year SMALLINT,
   month TINYINT,
   day TINYINT,
   t TIME,
   week TINYINT,
-  version INT
+  country VARCHAR(2),
+  version INT,
+  PRIMARY KEY (id)
 );
 
 INSERT INTO statistics (
 	id,
 	ts,
-	year,
-	month,
-	day,
-	t,
-	week,
 	version)
 SELECT
   t1.id,
   t1.v,
-  YEAR(STR_TO_DATE(t1.v,'%Y-%m-%dT%H:%i:%sZ')),
-  MONTH(STR_TO_DATE(t1.v,'%Y-%m-%dT%H:%i:%sZ')),
-  DAYOFMONTH(STR_TO_DATE(t1.v,'%Y-%m-%dT%H:%i:%sZ')),
-  TIME(STR_TO_DATE(t1.v,'%Y-%m-%dT%H:%i:%sZ')),
-  WEEKOFYEAR(STR_TO_DATE(t1.v,'%Y-%m-%dT%H:%i:%sZ')),
   t2.v
 FROM tag AS t1
 INNER JOIN tag AS t2

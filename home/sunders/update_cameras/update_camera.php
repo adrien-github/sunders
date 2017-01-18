@@ -23,43 +23,43 @@ if($mysqli->connect_errno) {
 $mysqli->autocommit(FALSE);
 
 if (! ($deleteStmt = $mysqli->prepare("DELETE FROM position WHERE id=?"))) {
-  echo 'Error while preparing delete position statement : ' . $mysqli->error ;
+  echo "Error while preparing delete position statement : " . $mysqli->error ;
   exit(1);
 }
 $deleteStmt->bind_param('d', $id);
 
 if (! ($deleteTagStmt = $mysqli->prepare("DELETE FROM tag WHERE id=?"))) {
-  echo 'Error while preparing delete tag statement : ' . $mysqli->error ;
+  echo "Error while preparing delete tag statement : " . $mysqli->error ;
   exit(1);
 }
 $deleteTagStmt->bind_param('d', $id);
 
 if (USE_STATISTICS) {
   if (! ($deleteStatsStmt = $mysqli->prepare("DELETE FROM statistics WHERE id=?"))) {
-    echo 'Error while preparing delete statistics statement : ' . $mysqli->error ;
+    echo "Error while preparing delete statistics statement : " . $mysqli->error ;
     exit(1);
   }
   $deleteStatsStmt->bind_param('d', $id);
 }
 
 if (! ($insertStmt = $mysqli->prepare("INSERT INTO position (id, latitude, longitude) VALUES (?, ?, ?)"))) {
-  echo 'Error while preparing insert position statement : ' . $mysqli->error ;
+  echo "Error while preparing insert position statement : " . $mysqli->error ;
   exit(1);
 }
 $insertStmt->bind_param('dii', $id, $latitude, $longitude);
 
 if (! ($insertTagStmt = $mysqli->prepare("INSERT INTO tag (id, k, v) VALUES (?, ?, ?)"))) {
-  echo 'Error while preparing insert tag statement : ' . $mysqli->error ;
+  echo "Error while preparing insert tag statement : " . $mysqli->error ;
   exit(1);
 }
 $insertTagStmt->bind_param('dss', $id, $k, $v);
 
 if (USE_STATISTICS) {
-  if (! ($insertStatsStmt = $mysqli->prepare("INSERT INTO statistics (id, ts, year, month, day, t, week, version) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"))) {
-    echo 'Error while preparing insert statistics statement : ' . $mysqli->error ;
+  if (! ($insertStatsStmt = $mysqli->prepare("INSERT INTO statistics (id, ts, version) VALUES (?, ?, ?)"))) {
+    echo "Error while preparing insert statistics statement : " . $mysqli->error ;
     exit(1);
   }
-  $insertStatsStmt->bind_param('dsiiisii', $id, $ts, $year, $month, $day, $t, $week, $version);
+  $insertStatsStmt->bind_param('dsi', $id, $ts, $version);
 }
 
 function printDebug() {
@@ -122,9 +122,9 @@ function startElement ($parser, $name, $attrs) {
 
 function endElement ($parser, $name) {
   if (USE_STATISTICS) {
-    global $mode, $deleteStmt, $deleteTagStmt, $deleteStatsStmt, $insertStmt, $insertTagStmt, $insertStatsStmt, $id, $latitude, $longitude, $k, $v, $ts, $year, $month, $day, $t, $week, $version, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
+    global $mode, $deleteStmt, $deleteTagStmt, $deleteStatsStmt, $insertStmt, $insertTagStmt, $insertStatsStmt, $id, $latitude, $longitude, $k, $v, $ts, $version, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
   } else {
-    global $mode, $deleteStmt, $deleteTagStmt, $insertStmt, $insertTagStmt, $id, $latitude, $longitude, $lat, $lon, $k, $v, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
+    global $mode, $deleteStmt, $deleteTagStmt, $insertStmt, $insertTagStmt, $id, $latitude, $longitude, $k, $v, $curNodeAttrs, $curNodeTags, $mysqli, $countDelete, $countModify, $countCreate;
   }
 
   if ($name == 'modify' || $name == 'delete' or $name == 'create') {
@@ -223,17 +223,10 @@ function endElement ($parser, $name) {
         }
 
         if (USE_STATISTICS) {
-          $date = date_create_from_format('Y-m-d\TH:i:s\Z', $curNodeAttrs['timestamp']);
-
           $ts = $curNodeAttrs['timestamp'];
-          $year = date_format($date, 'Y');
-          $month = date_format($date, 'n');
-          $day = date_format($date, 'j');
-          $t = date_format($date, 'H:i:s');
-          $week = intval(date_format($date, 'W')); // use intval() because of leading zero for weeks < 10
           $version = $curNodeAttrs['version'];
           if (! $insertStatsStmt->execute()) {
-            echo "***** Error : inserting ts $ts, year $year, month $month, day $day, t $t, week $week, version $version for $id : ". $insertStatsStmt->error . "\n";
+            echo "***** Error : inserting ts $ts, version $version for $id : ". $insertStatsStmt->error . "\n";
           }
         }
 

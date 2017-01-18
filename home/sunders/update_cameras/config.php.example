@@ -8,5 +8,8 @@ define('MYSQL_USER', 'camera');
 define('MYSQL_PASSWD', 'xxxxxxxx');
 
 define('USE_STATISTICS', false);
+define('WEBSERVICE_COUNTRY_URL', 'http://api.geonames.org/countryCode');
+define('WEBSERVICE_USER', 'xxxxxxxx');
+define('MAX_WEBREQUESTS_PER_HOUR', 1000);
 
 ?>
