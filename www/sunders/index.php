@@ -1,4 +1,6 @@
 <?php
+  // just a git test...
+
   if (!isset($pathToWebFolder)) {
     $pathToWebFolder = './';
   }
