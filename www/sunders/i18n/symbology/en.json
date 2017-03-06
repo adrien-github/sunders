@@ -1,8 +1,12 @@
 {
   "texts": {
     "title-icons": "Icons",
+      "icon-cam-alt": "Cameras",
+      "desc-cam": "Camera — no further information",
       "icon-fixed-alt": "Fixed cameras",
       "desc-fixed": "Fixed camera — usually observing a limited area",
+      "icon-panning-alt": "Panning cameras",
+      "desc-panning": "Panning camera — usually able to observe various areas",
       "icon-dome-alt": "Dome cameras",
       "desc-dome": "Dome camera — usually observing a 360° area",
       "icon-guard-alt": "Guards",

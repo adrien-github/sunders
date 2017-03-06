@@ -1,0 +1,221 @@
+/* ICON FILL COLORS */
+
+.icon0-fill   { fill: #6c5d53; } /* gray */
+.icon1-fill   { fill: #d40055; } /* red */
+.icon2-fill   { fill: #0055d4; } /* blue */
+.icon3-fill   { fill: #00d455; } /* green */
+.iconxxx-fill { fill: #a1a1b3; } /* text color */
+
+/* ICON BACKGROUND COLORS */
+
+.icon0-bg   { background: #6c5d53; } /* gray */
+.icon1-bg   { background: #d40055; } /* red */
+.icon2-bg   { background: #0055d4; } /* blue */
+.icon3-bg   { background: #00d455; } /* green */
+.iconxxx-bg { background: #a1a1b3; } /* text color */
+
+/* CHART FILL COLORS */
+
+.color0-fill  { fill: #6c5d53; }
+.color1-fill  { fill: rgb(117, 60,123); }
+.color2-fill  { fill: rgb(179,121,216); }
+.color3-fill  { fill: rgb(202, 45,197); }
+.color4-fill  { fill: rgb(170,  0,120); }
+.color5-fill  { fill: rgb(209, 15, 85); }
+.color6-fill  { fill: rgb(236, 75, 24); }
+.color7-fill  { fill: rgb(247,147, 30); }
+.color8-fill  { fill: rgb(252,226,108); }
+.color9-fill  { fill: rgb(198,242, 94); }
+.color10-fill { fill: rgb(159,196, 55); }
+.color11-fill { fill: rgb( 87,226, 76); }
+.color12-fill { fill: rgb( 64,164, 66); }
+.color13-fill { fill: rgb(  5,222,158); }
+.color14-fill { fill: rgb(196,252,240); }
+.color15-fill { fill: rgb(100,186,170); }
+.color16-fill { fill: rgb( 45,166,162); }
+.color17-fill { fill: rgb( 26,167,238); }
+.color18-fill { fill: rgb( 93,102,232); }
+.color19-fill { fill: rgb( 53, 60,152); }
+.color20-fill { fill: rgb( 53, 11,122); }
+
+/* CHART BACKGROUD COLORS */
+
+.color0-bg  { background: #6c5d53; }
+.color1-bg  { background: rgb(117, 60,123); }
+.color2-bg  { background: rgb(179,121,216); }
+.color3-bg  { background: rgb(202, 45,197); }
+.color4-bg  { background: rgb(170,  0,120); }
+.color5-bg  { background: rgb(209, 15, 85); }
+.color6-bg  { background: rgb(236, 75, 24); }
+.color7-bg  { background: rgb(247,147, 30); }
+.color8-bg  { background: rgb(252,226,108); }
+.color9-bg  { background: rgb(198,242, 94); }
+.color10-bg { background: rgb(159,196, 55); }
+.color11-bg { background: rgb( 87,226, 76); }
+.color12-bg { background: rgb( 64,164, 66); }
+.color13-bg { background: rgb(  5,222,158); }
+.color14-bg { background: rgb(196,252,240); }
+.color15-bg { background: rgb(100,186,170); }
+.color16-bg { background: rgb( 45,166,162); }
+.color17-bg { background: rgb( 26,167,238); }
+.color18-bg { background: rgb( 93,102,232); }
+.color19-bg { background: rgb( 53, 60,152); }
+.color20-bg { background: rgb( 53, 11,122); }
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #222233;
+  color: #a1a1b3;
+  font-family: sans-serif;
+}
+
+.light {
+  font-weight: 100;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+text {
+  fill: #a1a1b3;
+}
+
+a text {
+  fill: #0192d9;
+}
+
+div.selected {
+  border-bottom: solid 2px #0192d9;
+}
+
+/* TOTAL CHART */
+
+.vb-total {
+  margin: 10%;
+  /*border: dotted 1px red;*/
+}
+
+.g-total > text {
+  text-anchor: middle;
+}
+
+.g-total .number {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.g-total .text {
+  font-size: 3px;
+}
+
+/* PIE CHART */
+
+.pie-navi {
+  display: flex;
+  flex-direction: row;
+  margin: 10% 10% 0 10%;
+}
+
+.pie-navi-element {
+  width: 33%;
+}
+
+.pie-navi-element:hover {
+  background: rgba(161, 161, 179, 0.2);
+}
+
+.pie-navi-text {
+  text-anchor: middle;
+  font-size: 10px;
+}
+
+.pie {
+  display: flex;
+  align-items: flex-start;
+  margin: 10%;
+}
+
+.pie > div {
+  /*border: dotted 1px red;*/
+}
+
+.pie-slice {
+  cursor: pointer;
+}
+
+.pie-text {
+  text-anchor: middle;
+  font-size: 6px;
+}
+
+.g-pie > circle {
+  fill: #222233;
+}
+
+.pie-legend-row {
+  margin-bottom: 10px;
+}
+
+.pie-legend-row > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.pie-legend-row > .title {
+  font-weight: bold;
+}
+
+.square {
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.square-double {
+  min-width: 40px;
+  min-height: 20px;
+}
+
+.to-be-translated {
+  color: #d40055;
+}
+.to-be-translated a {
+  color: #ac39ac;
+  text-decoration: none;
+}
+
+.to-be-translated a:hover {
+  color: #d40055;
+}
+
+@media (orientation: landscape) {
+  .pie {
+    flex-direction: row;
+  }
+
+  .pie .pie-chart {
+    width: 50%;
+  }
+
+  .pie .pie-legend {
+    width: 40%;
+    padding-left: 10%;
+  }
+}
+
+@media (orientation: portrait) {
+  .pie {
+    flex-direction: column;
+  }
+
+  .pie > div {
+    width: 100%;
+  }
+
+  .pie .pie-legend {
+    margin-top: 50px;
+  }
+}

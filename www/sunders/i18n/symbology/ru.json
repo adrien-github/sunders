@@ -1,8 +1,12 @@
 {
   "texts": {
     "title-icons": "",
+      "icon-cam-alt": "",
+      "desc-cam": "",
       "icon-fixed-alt": "",
       "desc-fixed": "",
+      "icon-panning-alt": "",
+      "desc-panning": "",
       "icon-dome-alt": "",
       "desc-dome": "",
       "icon-guard-alt": "",

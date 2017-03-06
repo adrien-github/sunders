@@ -1,7 +1,11 @@
 [ { "listTitle": "title-icons",
     "listEntries": [
+      { "icons": [ { "src": "camAll.png", "alt": "icon-cam-alt" } ],
+        "description": "desc-cam" },
       { "icons": [ { "src": "fixedAll.png", "alt": "icon-fixed-alt" } ],
         "description": "desc-fixed" },
+      { "icons": [ { "src": "panningAll.png", "alt": "icon-panning-alt" } ],
+        "description": "desc-panning" },
       { "icons": [ { "src": "domeAll.png", "alt": "icon-dome-alt" } ],
         "description": "desc-dome" },
       { "icons": [ { "src": "guardAll.png", "alt": "icon-guard-alt" } ],
@@ -17,7 +21,7 @@
       { "icons": [ { "src": "colorGreenAll.png", "alt": "icon-green-alt" } ],
         "description": "desc-green" },
       { "icons": [
-          { "src": "todo_fixedAll.png", "alt": "icon-yellow-fixed-alt" },
+          { "src": "todo_camAll.png", "alt": "icon-yellow-fixed-alt" },
           { "src": "todo_domeAll.png", "alt": "icon-yellow-dome-alt" },
           { "src": "todo_guardAll.png", "alt": "icon-yellow-guard-alt" },
           { "src": "todo_traffic.png", "alt": "icon-yellow-alpr-alt" } ],

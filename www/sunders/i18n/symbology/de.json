@@ -1,9 +1,13 @@
 {
   "texts": {
     "title-icons": "Symbole",
-      "icon-fixed-alt": "Feststehende Kamera",
+      "icon-cam-alt": "Kameras",
+      "desc-cam": "Kamera — keine weiteren Angaben",
+      "icon-fixed-alt": "Feststehende Kameras",
       "desc-fixed": "Feststehende Kamera — überwacht meist einen begrenzten Bereich",
-      "icon-dome-alt": "Kuppelkamera",
+      "icon-panning-alt": "Schwenkbare Kameras",
+      "desc-panning": "Schwenkbare Kamera — überwacht meist verschiedene Bereiche",
+      "icon-dome-alt": "Kuppelkameras",
       "desc-dome": "Kuppelkamera — überwacht meist einen 360°-Bereich",
       "icon-guard-alt": "Wachpersonal",
       "desc-guard": "Wachpersonal — z.B. Beschäftigte eines Sicherheitsunternehmens",

@@ -168,7 +168,7 @@
           }
           echo     '</div>
                     <div class="pl-20 w-340">
-                      [ '.htmlentities($listEntryObject->{'sourceText'}).' ]<br><a href="'.$listEntryObject->{'href'}.'" target="_blank">'.htmlentities($listEntryObject->{'linkText'}).'</a>
+                      [ '.htmlentities($listEntryObject->{'sourceText'}).' ]<br><a href="'.$listEntryObject->{'href'}.'">'.htmlentities($listEntryObject->{'linkText'}).'</a>
                     </div>
                   </div>';
         }
@@ -210,7 +210,7 @@
           }
 
           echo   '<div>
-                    <a href="'.$hrefCredit.'" target="_blank">'.htmlentities($credit->{'credit'}).'</a> [<a href="'.$hrefLicense.'" target="_blank">'.htmlentities($credit->{'license'}).'</a>]
+                    <a href="'.$hrefCredit.'">'.htmlentities($credit->{'credit'}).'</a> [<a href="'.$hrefLicense.'">'.htmlentities($credit->{'license'}).'</a>]
                   </div>';
         }
       }

@@ -1,4 +1,6 @@
 change_file.osc*
 config.php
 lastState.txt
+lastStatisticsUpdate.txt
+log.*
 state.txt

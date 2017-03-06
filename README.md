@@ -6,7 +6,9 @@ Different icons and colors give you a quick overview about the indexed surveilla
 
 Icon | Description
 ---- | -----------
+![Cameras][img_camall] | Camera — no further information
 ![Fixed cameras][img_fixedall] | Fixed camera — usually observing a limited area
+![Panning cameras][img_panningall] | Panning camera — usually able to observe various areas
 ![Dome cameras][img_domeall] | Dome camera — usually observing a 360° area
 ![Guards][img_guardall] | Guard — e.g. an employee of a security service
 ![Automatic Licence Plate Recognition][img_traffic] | ALPR — Automatic Licence Plate Recognition
@@ -16,7 +18,7 @@ Color | Description
 ![Public surveillance][img_redall] | Red background — observing a public outdoor area, accessable by everyone
 ![Outdoor surveillance][img_blueall] | Blue background — observing a private outdoor area, accessable only by authorized persons
 ![Indoor surveillance][img_greenall] | Green background — observing an indoor area
-![Fixed cameras, fixme][img_todo_fixedall]<br>![Dome cameras, fixme][img_todo_domeall]<br>![Guards, fixme][img_todo_guardall]<br>![Automatic Licence Plate Recognition, fixme][img_todo_traffic] | Yellow icon — camera or guard marked with a fixme key because it needs further attention
+![Cameras, fixme][img_todo_camall]<br>![Dome cameras, fixme][img_todo_domeall]<br>![Guards, fixme][img_todo_guardall]<br>![Automatic Licence Plate Recognition, fixme][img_todo_traffic] | Yellow icon — camera or guard marked with a fixme key because it needs further attention
 
 A running instance of this project can be visited at [https://kamba4.crux.uberspace.de](https://kamba4.crux.uberspace.de).
 
@@ -153,7 +155,9 @@ Icon | Key | Value
 ![Public surveillance][img_red] | [`surveillance`](https://wiki.openstreetmap.org/wiki/Key:surveillance) | `public`
 ![Outdoor surveillance][img_blue] | [`surveillance`](https://wiki.openstreetmap.org/wiki/Key:surveillance) | `outdoor`
 ![Indoor surveillance][img_green] | [`surveillance`](https://wiki.openstreetmap.org/wiki/Key:surveillance) | `indoor`
-![Fixed camera][img_fixed] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type)<br>`camera:type` | `camera`<br>`fixed` / `panning`
+![Camera][img_cam] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type) | `camera`
+![Fixed camera][img_fixed] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type)<br>`camera:type` | `camera`<br>`fixed`
+![Panning camera][img_panning] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type)<br>`camera:type` | `camera`<br>`panning`
 ![Dome camera][img_dome] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type)<br>`camera:type` | `camera`<br>`dome`
 ![Guard][img_guard] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type) | `guard`
 ![Automatic Licence Plate Recognition][img_traffic] | [`surveillance:type`](https://wiki.openstreetmap.org/wiki/Key:surveillance:type) | `ALPR`
@@ -201,9 +205,17 @@ Key | Value
 [img_green]: ./www/sunders/images/colorGreen.png "Indoor surveillance"
 [img_greenall]: ./www/sunders/images/colorGreenAll.png "Indoor surveillance"
 
+[img_cam]: ./www/sunders/images/cam.png "Camera"
+[img_camall]: ./www/sunders/images/camAll.png "Cameras"
+[img_todo_camall]: ./www/sunders/images/todo_camAll.png "Cameras, fixme"
+
 [img_fixed]: ./www/sunders/images/fixed.png "Fixed camera"
 [img_fixedall]: ./www/sunders/images/fixedAll.png "Fixed cameras"
 [img_todo_fixedall]: ./www/sunders/images/todo_fixedAll.png "Fixed cameras, fixme"
+
+[img_panning]: ./www/sunders/images/panning.png "Panning camera"
+[img_panningall]: ./www/sunders/images/panningAll.png "Panning cameras"
+[img_todo_panningall]: ./www/sunders/images/todo_panningAll.png "Panning cameras, fixme"
 
 [img_dome]: ./www/sunders/images/dome.png "Dome camera"
 [img_domeall]: ./www/sunders/images/domeAll.png "Dome cameras"

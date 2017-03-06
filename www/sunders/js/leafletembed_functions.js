@@ -16,7 +16,7 @@ function initMap() {
 
   // Set up the OSM tile layer with correct attribution
   var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-  var dataAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap contributors</a>';
+  var dataAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>';
   var permalink = '<a href="#" onClick="permalink(null);return false;">Permalink</a>';
   var mapAttrib = dataAttrib + ' | ' + permalink;
   osmTiles = new L.TileLayer(osmUrl, {minZoom: 4, maxZoom: 18, attribution: mapAttrib});
@@ -213,8 +213,13 @@ function drawFootprint(polygonCoordinates) {
 // Add camera icon.
 function getPlotMarkerCamera(plot, plotLatLng) {
   // Get icon name for current camera or guard: fixed, dome, guard
-  var iconName = 'fixed';
-  if (plot['camera:type'] == 'dome') {
+  // var iconName = 'fixed';
+  var iconName = 'cam';
+  if (plot['camera:type'] == 'fixed') {
+    iconName = 'fixed';
+  } else if (plot['camera:type'] == 'panning') {
+    iconName = 'panning';
+  } else if (plot['camera:type'] == 'dome') {
     iconName = 'dome';
   } else if (plot['surveillance:type'] == 'guard') {
     iconName = 'guard';
@@ -337,7 +342,7 @@ function drawCameraFocusDome(plotLatLng, cameraHeight) {
 // Add camera popup to camera marker.
 function addCameraDetailsData(plotMarker, plot) {
   popupDataTable = '<table class="popup-content">'
-    + '<tr><td>id</td><td><a href="https://www.openstreetmap.org/node/' + (plot.id) + '" target="_blank">' + (plot.id) + '</a></td></tr>'
+    + '<tr><td>id</td><td><a href="https://www.openstreetmap.org/node/' + (plot.id) + '">' + (plot.id) + '</a></td></tr>'
     // + '<tr><td>user osm</td><td>' + (plot.userid) + '</td></tr>'
     + '<tr><td>latitude</td><td>' + (plot.lat) + '</td></tr>'
     + '<tr><td>longitude</td><td>' + (plot.lon) + '</td></tr>';
@@ -348,9 +353,9 @@ function addCameraDetailsData(plotMarker, plot) {
       if (descr.substr(0, 4) == 'http') {
         var suffix = descr.slice(-3).toLowerCase();
         if (suffix == 'jpg' || suffix == 'gif' || suffix == 'png') {
-          popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank"><img alt="image" src="' + descr + '" width="200"/></a>';
+          popupDataTable = popupDataTable + '<a href="' + descr + '"><img alt="image" src="' + descr + '" width="200"/></a>';
         } else {
-          popupDataTable = popupDataTable + '<a href="' + descr + '" target="_blank">Link</a>';
+          popupDataTable = popupDataTable + '<a href="' + descr + '">Link</a>';
         }
       } else {
         popupDataTable = popupDataTable + plot[x];

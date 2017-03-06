@@ -4,6 +4,7 @@ define('DEFAULT_ZOOM', 15);
 define('DEFAULT_LAT', 52.37672572);
 define('DEFAULT_LON', 9.73787785);
 define('DEFAULT_LANGUAGE', 'en');
+define('DEFAULT_PIE', 'country');
 
 define('MYSQL_HOST', 'localhost');
 define('MYSQL_DB', 'camera');

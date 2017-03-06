@@ -1,8 +1,12 @@
 {
   "texts": {
     "title-icons": "Iconos",
+      "icon-cam-alt": "Cámaras",
+      "desc-cam": "Cámara — no hay más información",
       "icon-fixed-alt": "Cámaras Fija",
-      "desc-fixed": "Cámara Fija — Usualmente abarca un área limitada",
+      "desc-fixed": "Cámara Fija — usualmente abarca un área limitada",
+      "icon-panning-alt": "Cámaras Panorámica",
+      "desc-panning": "Cámara Panorámica — usualmente abarca varias áreas",
       "icon-dome-alt": "Cámaras Domo",
       "desc-dome": "Cámara Domo — usualmente abarca un área de 360°",
       "icon-guard-alt": "Guardia",
