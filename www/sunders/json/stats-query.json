@@ -1,0 +1,143 @@
+{
+	"level0": {
+		"country": {
+			"total": [ "country-all", "area-all", "type-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [] },
+				{ "label": "area-pl", "pie": "area", "cols": [] },
+				{ "label": "type-pl", "pie": "type", "cols": [] }
+			],
+			"query": { "pie": "area", "cols": [ "country" ] }
+		},
+		"area": {
+			"total": [ "area-all", "country-all", "type-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [] },
+				{ "label": "area-pl", "pie": "area", "cols": [] },
+				{ "label": "type-pl", "pie": "type", "cols": [] }
+			],
+			"query": { "pie": "country", "cols": [ "area" ] }
+		},
+		"type": {
+			"total": [ "type-all", "country-all", "area-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [] },
+				{ "label": "area-pl", "pie": "area", "cols": [] },
+				{ "label": "type-pl", "pie": "type", "cols": [] }
+			],
+			"query": { "pie": "country", "cols": [ "type" ] }
+		}
+	},
+	"level1": {
+		"area_country": {
+			"total": [ "country", "area-all", "type-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "country" ] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "country" ] }
+			],
+			"query": { "pie": "type", "cols": [ "country", "area" ] }
+		},
+		"type_country": {
+			"total": [ "country", "area-all", "type-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "country" ] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "country" ] }
+			],
+			"query": { "pie": "area", "cols": [ "country", "type" ] }
+		},
+		"country_area": {
+			"total": [ "area", "country-all", "type-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "area" ] },
+				{ "label": "area-all", "pie": "area", "cols": [] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "area" ] }
+			],
+			"query": { "pie": "type", "cols": [ "area", "country" ] }
+		},
+		"type_area": {
+			"total": [ "area", "country-all", "type-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "area" ] },
+				{ "label": "area-all", "pie": "area", "cols": [] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "area" ] }
+			],
+			"query": { "pie": "country", "cols": [ "area", "type" ] }
+		},
+		"country_type": {
+			"total": [ "type", "country-all", "area-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "type" ] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "type" ] },
+				{ "label": "type-all", "pie": "type", "cols": [] }
+			],
+			"query": { "pie": "area", "cols": [ "type", "country" ] }
+		},
+		"area_type": {
+			"total": [ "type", "country-all", "area-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "type" ] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "type" ] },
+				{ "label": "type-all", "pie": "type", "cols": [] }
+			],
+			"query": { "pie": "country", "cols": [ "type", "area" ] }
+		}
+	},
+	"level2": {
+		"type_country|area": {
+			"total": [ "country", "area", "type-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [ "area" ] },
+				{ "label": "area-all", "pie": "area", "cols": [ "country" ] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "country", "area" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		},
+		"area_country|type": {
+			"total": [ "country", "type", "area-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [ "type" ] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "country", "type" ] },
+				{ "label": "type-all", "pie": "type", "cols": [ "country" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		},
+		"type_area|country": {
+			"total": [ "area", "country", "type-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [ "area" ] },
+				{ "label": "area-all", "pie": "area", "cols": [ "country" ] },
+				{ "label": "type-pl", "pie": "type", "cols": [ "area", "country" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		},
+		"country_area|type": {
+			"total": [ "area", "type", "country-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "area", "type" ] },
+				{ "label": "area-all", "pie": "area", "cols": [ "type" ] },
+				{ "label": "type-all", "pie": "type", "cols": [ "area" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		},
+		"area_type|country": {
+			"total": [ "type", "country", "area-all" ],
+			"navi": [
+				{ "label": "country-all", "pie": "country", "cols": [ "type" ] },
+				{ "label": "area-pl", "pie": "area", "cols": [ "type", "country" ] },
+				{ "label": "type-all", "pie": "type", "cols": [ "country" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		},
+		"country_type|area": {
+			"total": [ "type", "area", "country-all" ],
+			"navi": [
+				{ "label": "country-pl", "pie": "country", "cols": [ "type", "area" ] },
+				{ "label": "area-all", "pie": "area", "cols": [ "type" ] },
+				{ "label": "type-all", "pie": "type", "cols": [ "area" ] }
+			],
+			"query": { "pie": null, "cols": [] }
+		}
+	}
+}
