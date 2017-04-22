@@ -1,4 +1,8 @@
 /* COLORS
+background:  #222233 /  34, 34, 51
+text:        #a1a1b3 / 161,161,179
+links:       #0192d9 /   1,146,217
+
 beige:       #f1eee8 / 241,238,232
 lightblue:   #0192d9 /   1,146,217
 darkblue:    #050585 /   5,  5,133
@@ -101,13 +105,26 @@ body {
   transition: all .8s;
 }
 
+#news.slider-overlay {
+  display: flex;
+  align-items: flex-end;
+  top: 95px;
+  right: -255px;
+  color: #ffdd55;
+  font-weight: bold;
+}
+
+#news.slider-overlay .text {
+  padding-left: 10px;
+}
+
 #anchorbar.slider-overlay {
   top: 10px;
 }
 
 #buttonbar.slider-overlay {
   top: 52px;
-  bottom: '';
+/*  bottom: '';*/
 }
 
 .topbar {
@@ -179,7 +196,8 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-color: #60b5de;
+/*  background-color: #60b5de;*/
+  background-color: #222233;
   border: 1px solid #f1eee8;
   border-radius: 0px;
   border-right: none;
@@ -202,7 +220,8 @@ body {
   background-image: url('../images/button_search.png');
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #60b5de;
+/*  background-color: #60b5de;*/
+  background-color: #222233;
   border: 1px solid #f1eee8;
   border-left: 1px solid transparent;
   color: #f1eee8;
@@ -264,7 +283,8 @@ body {
 }
 
 .search-result:hover {
-  background-color: #60b5de;
+/*  background-color: #60b5de;*/
+  background-color: #222233;
 }
 
 .search-more {
@@ -372,20 +392,24 @@ body {
   padding-left: 40px;
   padding-right: 40px;
   background: #f1eee8;
-  background-color: rgba(241, 238, 232, 0.95);
-  color: #0192d9;
+/*  background-color: rgba(241, 238, 232, 0.95);*/
+  background-color: rgba(34, 34, 51, 0.95);
+/*  color: #0192d9;*/
+  color: #a1a1b3;
   overflow-y: auto;
   transform: translate3d(490px, 0, 0);
   transition: all .8s;
 }
 
 .slider a {
-  color: #050585;
+/*  color: #050585;*/
+  color: #0192d9;
   text-decoration: none;
 }
 
 .slider a:hover {
-  color: #0192d9;
+/*  color: #0192d9;*/
+  color: #a1a1b3;
 }
 
 .slider-item {
@@ -475,7 +499,8 @@ body {
 }
 
 .fieldofview .fov-image {
-  border: 1px solid #d9d0c9;
+/*  border: 1px solid #d9d0c9;*/
+  border: 1px solid #a1a1b3;
 }
 
 .slider-footer {

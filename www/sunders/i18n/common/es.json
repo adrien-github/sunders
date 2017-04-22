@@ -21,7 +21,8 @@
     "footer-your-key": "Envianos o decinos donde podemos conseguir tu llave.",
     "footer-help": "Si necesitas ayuda con PGP, @@LF00 / @@LF01 / @@LF02.",
     "at": "en",
-    "dot": "punto"
+    "dot": "punto",
+    "new-stats": "¡nuevo!"
   },
   "links": {
     "how-osm": [ "usar una que ya tengas", "crearte una cuenta" ],

@@ -702,8 +702,8 @@
     $vbWidth = count($periodArray) * $viewboxMultiplier;
     $vbHeight = $vbWidth * 4 / 5;
     $chartHeight = $vbWidth * 3 / 5;
-    $chartPaddingTop = ($vbHeight - $chartHeight) / 10;
-    $chartPaddingBottom = ($vbHeight - $chartHeight) * 9 / 10;
+    $chartPaddingTop = ($vbHeight - $chartHeight) * 1 / 5;
+    $chartPaddingBottom = ($vbHeight - $chartHeight) * 4 / 5;
     $horizontalSegments = 4;
 
     $maxUploads = $lineType == 'sum' ? $surveillanceNodesPerX['max-sum'] : $surveillanceNodesPerX['max'];
@@ -880,7 +880,7 @@
     $lineObjectElements[] = '"url-query": "'.$pieObject->{'url-query'}.'"';
     $lineObjectElements[] = '"text-id": "'.$pieObject->{'text-id'}.'"';
     $lineObjectElements[] = '"text-x": '.($vbWidth / 2);
-    $lineObjectElements[] = '"text-y": '.($vbHeight * 19 / 20);
+    $lineObjectElements[] = '"text-y": '.($vbHeight * 39 / 40);
     // $lineObjectElements[] = '"text-y": '.$vbHeight;
     $lineObjectElements[] = '"text-label": "'.$pieObject->{'text-label'}.'&emsp;&bull;&emsp;'.$pieObject->{'text-percentage'}.'&emsp;&bull;&emsp;'.$pieObject->{'text-nodes'}.'"';
     $lineObjectElements[] = '"font-size": '.($vbWidth / 30);
@@ -1402,15 +1402,19 @@
     <link rel="stylesheet" href="<?php echo $pathToWebFolder.'css/stats.css' ?>">
   </head>
   <body>
-    <div class="header">
-      <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>"><img src="<?php echo $pathToWebFolder.'images/title-sunders.png' ?>" alt="Surveillance under Surveillance"></a>
-    </div>
+    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>">
+      <div class="header">
+        <img src="<?php echo $pathToWebFolder.'images/title-sunders.png' ?>" alt="Surveillance under Surveillance">
+      </div>
+    </a>
     <?php
       echo getCharts($i18nStats, $i18nStatsDefault, $i18nCountries, $i18nCountriesDefault, $initialPie, $initialTime, $colsArray, $valsArray, $year, $month, $pieLevel, $statsQueryObject);
       $mysqli->close();
     ?>
-    <div class="footer">
-      <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>"><img src="<?php echo $pathToWebFolder.'images/title-mea.png' ?>" alt="MAP 'EM ALL"></a>
-    </div>
+    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>">
+      <div class="footer">
+        <img src="<?php echo $pathToWebFolder.'images/title-mea.png' ?>" alt="MAP 'EM ALL">
+      </div>
+    </a>
   </body>
 </html>

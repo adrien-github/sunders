@@ -21,7 +21,8 @@
     "footer-your-key": "Teil uns mit, wo wir deinen PGP-Schlüssel finden.",
     "footer-help": "Hilfe zum Thema Verschlüsselung gibt es @@LT00.",
     "at": "ät",
-    "dot": "punkt"
+    "dot": "punkt",
+    "new-stats": "neue Statistiken!"
   },
   "links": {
     "how-osm": [ "Verwende dein existierendes OSM-Konto", "lege ein neues Konto an" ],

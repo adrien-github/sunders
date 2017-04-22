@@ -21,7 +21,8 @@
     "footer-your-key": "Let us know where we can find your PGP key.",
     "footer-help": "Get help for @@LF00 / @@LF01 / @@LF02.",
     "at": "at",
-    "dot": "dot"
+    "dot": "dot",
+    "new-stats": "new statistics!"
   },
   "links": {
     "how-osm": [ "use your existing OSM account", "create a new one" ],

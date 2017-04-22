@@ -245,6 +245,11 @@ div.unselected {
 
 .header, .footer {
   text-align: center;
+  margin: 0 10%;
+}
+
+.header:hover, .footer:hover {
+  background: rgba(161, 161, 179, 0.2);
 }
 
 .header {

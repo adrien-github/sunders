@@ -63,6 +63,11 @@
 
     <div id="map"></div>
 
+    <div class="slider-overlay" id="news">
+      <div><img src="<?php echo $pathToWebFolder.'images/yarrow-up.png' ?>"></div>
+      <div class="text"><?php echo translate($i18nCommon, $i18nCommonDefault, 'new-stats', [], [], []) ?></div>
+    </div>
+
     <div class="slider-overlay" id="anchorbar">
       <div class="topbar anchorbar">
         <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'what-alt', [], [], []) ?>" href="#what">
@@ -81,7 +86,7 @@
       <div class="topbar buttonbar">
         <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'search-button-alt', [], [], []) ?>" class="bar-button search" onClick="displaySearchOverlay();return false;"></div>
         <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
-        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/statistics.php' ?>">
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/stats/' ?>">
           <div class="bar-button stats"></div>
         </a>
         <?php addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault); ?>
@@ -103,7 +108,6 @@
           <div id="search-results-list"></div>
         </div>
       </div>
-
     </div>
 
     <div class="slider">
