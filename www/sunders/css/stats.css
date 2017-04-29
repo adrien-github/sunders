@@ -433,6 +433,79 @@ div.unselected {
   min-height: 20px;
 }
 
+/* PIE CHART LEGEND */
+
+.pie-legend-section-check {
+  display: none;
+}
+
+/* checkbox = false
+    -- show section 'less'
+    -- show button 'more'
+    -- hide section 'more'
+    -- hide button 'less' */
+.pie-legend-section-check ~ .pie-legend-less {
+  display: block;
+}
+
+.pie-legend-section-check ~ .pie-legend-section-toggle-more {
+  display: block;
+}
+
+.pie-legend-section-check ~ .pie-legend-more {
+  display: none;
+}
+
+.pie-legend-section-check ~ .pie-legend-section-toggle-less {
+  display: none;
+}
+
+/* checkbox = true
+    -- show section 'more'
+    -- show button 'less'
+    -- hide section 'less'
+    -- hide button 'more' */
+
+.pie-legend-section-check:checked ~ .pie-legend-more {
+  display: block;
+}
+
+.pie-legend-section-check:checked ~ .pie-legend-section-toggle-less {
+  display: block;
+}
+
+.pie-legend-section-check:checked ~ .pie-legend-less {
+  display: none;
+}
+
+.pie-legend-section-check:checked ~ .pie-legend-section-toggle-more {
+  display: none;
+}
+
+.pie-legend label {
+  cursor: pointer;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: 40px;
+  background-color: transparent;
+}
+
+.pie-legend-section-toggle-more {
+  background-image: url('../images/button_more_blue.png');
+}
+
+.pie-legend-section-toggle-more:hover {
+  background-image: url('../images/button_more_gray.png');
+}
+
+.pie-legend-section-toggle-less {
+  background-image: url('../images/button_less_blue.png');
+}
+
+.pie-legend-section-toggle-less:hover {
+  background-image: url('../images/button_less_gray.png');
+}
+
 /* TIME CHART */
 
 .time {

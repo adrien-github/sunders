@@ -967,7 +967,8 @@
 
     $piePathTags = '';
     $pieUseTags = '';
-    $pieLegendTags = '';
+    $pieLegendTagsLess = '';
+    $pieLegendTagsMore = '';
 
     foreach($pieChartObject->{'pie'} as $piePieObject) {
       $pieAStartTag = '';
@@ -1028,7 +1029,10 @@
     // background colored pie center circle
     $piePathTags = $piePathTags.'<circle class="donut-hole" cx="'.$pieRadius.'" cy="'.$pieRadius.'" r="'.($pieRadius * 2 / 3).'"/>';
 
-    foreach($pieChartObject->{'legend'} as $pieLegendObject) {
+    // if the legend has more then 10 entries the legend can be toggled (show first 10 entries or show all entries)
+    $isToggleLegend = count($pieChartObject->{'legend'}) > 10;
+
+    foreach($pieChartObject->{'legend'} as $i => $pieLegendObject) {
       $title = $pieLegendObject->{'title'};
       $subtitle = '';
 
@@ -1044,7 +1048,7 @@
           </div>';
       }
 
-      $pieLegendTags = $pieLegendTags.'
+      $currentPieLegendTags = '
         <div class="pie-legend-row">
           <div class="title bold">
             <div class="square '.$pieLegendObject->{'bg-class'}.'"></div>
@@ -1057,6 +1061,27 @@
             <div>'.$pieLegendObject->{'percentage'}->{'string'}.'&emsp;&bull;&emsp;'.$pieLegendObject->{'nodes'}->{'string'}.'</div>
           </div>
         </div>';
+
+      $pieLegendTagsMore = $pieLegendTagsMore.$currentPieLegendTags;
+
+      if ($isToggleLegend && $i < 10) {
+        $pieLegendTagsLess = $pieLegendTagsLess.$currentPieLegendTags;     
+      }
+    }
+
+    if ($isToggleLegend) {
+      $pieLegendTags = '
+        <input class="pie-legend-section-check" id="pie-legend" type="checkbox">
+        <div class="pie-legend-less">
+          '.$pieLegendTagsLess.'
+        </div>
+        <div class="pie-legend-more">
+          '.$pieLegendTagsMore.'
+        </div>
+        <label class="pie-legend-section-toggle-more" for="pie-legend"></label>
+        <label class="pie-legend-section-toggle-less" for="pie-legend"></label>';
+    } else {
+      $pieLegendTags = $pieLegendTagsMore;
     }
 
     $pieTags = '
