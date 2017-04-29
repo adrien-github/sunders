@@ -406,6 +406,10 @@ div.unselected {
   font-size: 6px;
 }
 
+.g-pie path {
+  stroke: #222233;
+}
+
 .g-pie .donut-hole {
   fill: #222233;
 }
@@ -498,6 +502,12 @@ div.unselected {
 
 .time .row-title {
   font-size: 0.8rem;
+}
+
+tfoot td {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 8px;
 }
 
 /*.even-bg {

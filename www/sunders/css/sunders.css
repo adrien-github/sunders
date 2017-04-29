@@ -32,6 +32,10 @@ body {
   height: 100%;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .text-small {
   font-size: 0.8em;
 }
@@ -124,7 +128,6 @@ body {
 
 #buttonbar.slider-overlay {
   top: 52px;
-/*  bottom: '';*/
 }
 
 .topbar {
@@ -196,7 +199,6 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-/*  background-color: #60b5de;*/
   background-color: #222233;
   border: 1px solid #f1eee8;
   border-radius: 0px;
@@ -220,7 +222,6 @@ body {
   background-image: url('../images/button_search.png');
   background-repeat: no-repeat;
   background-position: center;
-/*  background-color: #60b5de;*/
   background-color: #222233;
   border: 1px solid #f1eee8;
   border-left: 1px solid transparent;
@@ -283,7 +284,6 @@ body {
 }
 
 .search-result:hover {
-/*  background-color: #60b5de;*/
   background-color: #222233;
 }
 
@@ -392,9 +392,7 @@ body {
   padding-left: 40px;
   padding-right: 40px;
   background: #f1eee8;
-/*  background-color: rgba(241, 238, 232, 0.95);*/
   background-color: rgba(34, 34, 51, 0.95);
-/*  color: #0192d9;*/
   color: #a1a1b3;
   overflow-y: auto;
   transform: translate3d(490px, 0, 0);
@@ -402,13 +400,11 @@ body {
 }
 
 .slider a {
-/*  color: #050585;*/
   color: #0192d9;
   text-decoration: none;
 }
 
 .slider a:hover {
-/*  color: #0192d9;*/
   color: #a1a1b3;
 }
 
@@ -499,7 +495,6 @@ body {
 }
 
 .fieldofview .fov-image {
-/*  border: 1px solid #d9d0c9;*/
   border: 1px solid #a1a1b3;
 }
 
@@ -543,4 +538,42 @@ body {
 
 .to-be-translated a:hover {
   color: #d40055;
+}
+
+/* overwrite leaflet styles */
+
+.leaflet-popup-content-wrapper {
+  background: rgba(34, 34, 51, 0.95);
+  color: #a1a1b3;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.leaflet-popup-content-wrapper a {
+  color: #0192d9;
+  text-decoration: none;
+}
+
+.leaflet-popup-content-wrapper a:hover {
+  color: #a1a1b3;
+}
+
+.leaflet-popup-tip {
+  background: rgba(34, 34, 51, 0.95);
+  color: #a1a1b3;
+}
+
+.leaflet-bar a {
+  background: rgba(34, 34, 51, 0.95);
+  color: #a1a1b3;
+}
+
+.leaflet-bar a:hover {
+  background: rgba(34, 34, 51, 0.8);
+  color: #a1a1b3;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  top: 4px;
+  right: 4px;
 }

@@ -881,7 +881,6 @@
     $lineObjectElements[] = '"text-id": "'.$pieObject->{'text-id'}.'"';
     $lineObjectElements[] = '"text-x": '.($vbWidth / 2);
     $lineObjectElements[] = '"text-y": '.($vbHeight * 39 / 40);
-    // $lineObjectElements[] = '"text-y": '.$vbHeight;
     $lineObjectElements[] = '"text-label": "'.$pieObject->{'text-label'}.'&emsp;&bull;&emsp;'.$pieObject->{'text-percentage'}.'&emsp;&bull;&emsp;'.$pieObject->{'text-nodes'}.'"';
     $lineObjectElements[] = '"font-size": '.($vbWidth / 30);
 
@@ -966,7 +965,6 @@
 
     // ######## ######## ########      PIE CHART      ######## ######## ########
 
-    // $pieNaviTags = '';
     $piePathTags = '';
     $pieUseTags = '';
     $pieLegendTags = '';
@@ -1110,6 +1108,7 @@
         if ($i == 0) {
           // $thArray[] = '<th class="'.$evenClass.'">'.$periodObject->{'period'}.'</th>';
           $thArray[] = '<th>'.$periodObject->{'period'}.'</th>';
+          $tfArray[] = '<td>'.$periodObject->{'period'}.'</td>';
         }
         // $tdArray[] = '<td class="'.$color.'-bb '.$evenClass.'">'.$periodObject->{'uploads'}.'</td>';
         $tdArray[] = '<td class="'.$color.'-bb">'.$periodObject->{'uploads'}.'</td>';
@@ -1207,6 +1206,11 @@
             '.(implode('', $thArray)).'
           </tr>
         </thead>
+        <tfoot>
+          <tr>
+            '.(implode('', $tfArray)).'
+          </tr>
+        </tfoot>
         <tbody>
           '.(implode('', $tbodyTrArray)).'
         </tbody>
