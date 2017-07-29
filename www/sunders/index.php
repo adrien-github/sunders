@@ -35,13 +35,26 @@
       $initialLon = DEFAULT_LON;
     }
   }
+
+  $sliderToggleChecked = 'checked="checked"';
+  $embQueryFirst = '';
+  $embedPerma = 'null';
+  if (array_key_exists('emb', $_GET)) {
+    $embedMode = $_GET['emb'];
+    if ($embedMode == 'wosb') {
+      $sliderToggleChecked = '';
+    }
+  }
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8"/>
     <title>Surveillance under Surveillance</title>
+    <meta name="description" content="Surveillance Camera Map">
+    <meta name="keywords" lang="en" content="surveillance, cameras, cctv, video, map"> 
+    <meta name="keywords" lang="de" content="überwachung, kameras, video, karte"> 
 
     <link rel="shortcut icon" href="<?php echo $pathToWebFolder.'favicon.ico' ?>">
     <link rel="icon" type="image/png" href="<?php echo $pathToWebFolder.'favicon.png' ?>" sizes="32x32">
@@ -56,7 +69,21 @@
   </head>
   <body>
 
-    <input class="slider-toggle-input" type="checkbox" id="slider-id" checked="checked">
+    <?php
+      if ($embedMode != 'wsb' && $embedMode != 'wosb') {
+        echo '<script language="javascript">
+                if (window.self !== window.top) {
+                  window.top.location.href="./sunders.html";
+                }
+              </script>';
+      } else {
+        $embQuery = 'emb='.$embedMode;
+        $embQueryFirst = '?'.$embQuery;
+        $embedPerma = '\''.$embedMode.'\'';
+      }
+    ?>
+
+    <input class="slider-toggle-input" type="checkbox" id="slider-id" <?php echo $sliderToggleChecked ?>>
     <label class="slider-toggle" for="slider-id">
       <img src="<?php echo $pathToWebFolder.'images/slider-toggle.png' ?>">
     </label>
@@ -85,8 +112,8 @@
     <div class="slider-overlay" id="buttonbar">
       <div class="topbar buttonbar">
         <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'search-button-alt', [], [], []) ?>" class="bar-button search" onClick="displaySearchOverlay();return false;"></div>
-        <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null);return false;"></div>
-        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/stats/' ?>">
+        <div title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'permalink-button-alt', [], [], []) ?>" class="bar-button permalink" onClick="permalink(null, <?php echo $embedPerma ?>);return false;"></div>
+        <a title="<?php echo translate($i18nCommon, $i18nCommonDefault, 'stats-button-alt', [], [], []) ?>" href="<?php echo $pathToWebFolder.$initialLanguage.'/stats/'.$embQueryFirst ?>">
           <div class="bar-button stats"></div>
         </a>
         <?php addListLanguages($initialLanguage, $i18nCommon, $i18nCommonDefault); ?>

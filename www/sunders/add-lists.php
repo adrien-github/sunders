@@ -219,7 +219,7 @@
 
   // Create a HTML list that contains the supported languages (i18n).
   function addListLanguages($initialLanguage, $i18n, $i18nDefault) {
-    global $pathToWebFolder;
+    global $pathToWebFolder, $embedPerma;
 
     $supportedLanguages = [
       'de' => 'deutsch',
@@ -241,7 +241,7 @@
         $classLanguangeCurrent = ' class="language-current"';
       }
 
-      echo '    <a href="#" onClick="permalink(\''.$languageID.'\');return false;"><li'.$classLanguangeCurrent.'>'.$languageDisplay.'</li></a>';
+      echo '    <a href="#" onClick="permalink(\''.$languageID.'\', '.$embedPerma.');return false;"><li'.$classLanguangeCurrent.'>'.$languageDisplay.'</li></a>';
     }
 
     echo '    </ul>

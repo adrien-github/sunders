@@ -5,19 +5,36 @@ var plotList;
 var plotLayers = [];
 var footprintPolygon;
 
+// Returns the value of URL parameter #name.
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
 // Draw the map for the first time.
 function initMap() {
   // Set up the AJAX request.
   ajaxRequest=getXmlHttpRequest();
-  if (ajaxRequest==null) {
+  if (ajaxRequest == null) {
     alert('This browser does not support HTTP requests.');
     return;
+  }
+
+  // --- URLSearchParams is not supported by all browsers ---
+  // var urlParams = new URLSearchParams(window.location.search);
+  // var embMode = urlParams.get('emb');
+  var embMode = getUrlParameter('emb');
+  console.log(embMode);
+  if (embMode != '') {
+    embMode = '\'' + embMode + '\'';
   }
 
   // Set up the OSM tile layer with correct attribution
   var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var dataAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>';
-  var permalink = '<a href="#" onClick="permalink(null);return false;">Permalink</a>';
+  var permalink = '<a href="#" onClick="permalink(null, ' + embMode + ');return false;">Permalink</a>';
   var mapAttrib = dataAttrib + ' | ' + permalink;
   osmTiles = new L.TileLayer(osmUrl, {minZoom: 4, maxZoom: 18, attribution: mapAttrib});
 
@@ -39,11 +56,12 @@ function getXmlHttpRequest() {
 }
 
 // Create an URL for the current location and use this URL to reload the map.
-function getPermalink(switchToLanguage) {
+function getPermalink(switchToLanguage, embedMode) {
   var center = map.getCenter();
   var lat = Math.round(center.lat * 100000000) / 100000000;
   var lon = Math.round(center.lng * 100000000) / 100000000;
   var serverUrl = location.protocol + '//' + location.host + location.pathname;
+  var embQuery = '';
 
   if (switchToLanguage != null) {
     var supportedLanguages = [ 'de', 'en', 'es', 'fr', 'ru' ];
@@ -55,13 +73,18 @@ function getPermalink(switchToLanguage) {
     serverUrl = serverUrl + switchToLanguage;
   }
 
-  var permalinkUrl = serverUrl + '?lat=' + lat + '&lon=' + lon + '&zoom=' + map.getZoom();
+  if (embedMode != null) {
+    embQuery = '&emb=' + embedMode;
+  }
+
+  var permalinkUrl = serverUrl + '?lat=' + lat + '&lon=' + lon + '&zoom=' + map.getZoom() + embQuery;
+
   return permalinkUrl;
 }
 
 // Use the permalink URL to reload the map.
-function permalink(switchToLanguage) {
-  window.location = getPermalink(switchToLanguage);
+function permalink(switchToLanguage, embedMode) {
+  window.location = getPermalink(switchToLanguage, embedMode);
 }
 
 // Add plots to map.

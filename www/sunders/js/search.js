@@ -68,7 +68,7 @@ function parseResult(response) {
   for (var i=searchLimit-11; i<lastResultIndex; i++) {
     searchResult = response[i];
     searchResultDivs +=
-      '<div class="search-result" onClick="gotoLocation(' + searchResult.lat + ', ' + searchResult.lon + ');return false;">' +
+      '<div class="search-result" gotoLocation="onClick(' + searchResult.lat + ', ' + searchResult.lon + ');return false;">' +
         '<div class="text-medium">' + searchResult.class + ' / ' + searchResult.type + '</div>' +
         '<div>' + searchResult.display_name + '</div>' +
       '</div>';
@@ -86,9 +86,26 @@ function parseResult(response) {
   document.getElementById('search-results-list-block').style.display = 'block';
 }
 
+// Returns the value of URL parameter #name.
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(window.location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
 // Open map for coordinates
 function gotoLocation(lat, lon) {
   var serverUrl = location.protocol + '//' + location.host + location.pathname;
-  var gotoUrl = serverUrl + '?lat=' + lat + '&lon=' + lon + '&zoom=' + map.getZoom();
+
+  // --- URLSearchParams is not supported by all browsers ---
+  // var urlParams = new URLSearchParams(window.location.search);
+  // var embMode = urlParams.get('emb');
+  var embMode = getUrlParameter('emb');
+  if (embedMode != '') {
+    embQuery = '&emb=' + embedMode;
+  }
+
+  var gotoUrl = serverUrl + '?lat=' + lat + '&lon=' + lon + '&zoom=' + map.getZoom() + embQuery;
   window.location = gotoUrl;
 }
