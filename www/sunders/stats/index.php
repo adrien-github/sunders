@@ -9,6 +9,8 @@
   $month = 'all';
   $titleStringFilter = '';
   $titleStringTime = '';
+  $embQueryFirst = '';
+  $embQueryNth = '';
 
   if (!isset($pathToWebFolder)) {
     $pathToWebFolder = '../';
@@ -111,6 +113,16 @@
     $valueInt = (int) $valueStr;
     if (is_numeric($valueStr) && $valueInt >= 1 && $valueInt <= 12) {
       $month = $valueStr;
+    }
+  }
+
+  // get embed mode from URL
+  if (array_key_exists('emb', $_GET)) {
+    $embedMode = $_GET['emb'];
+    if ($embedMode == 'wsb' || $embedMode == 'wosb') {
+      $embQuery = 'emb='.$embedMode;
+      $embQueryFirst = '?'.$embQuery;
+      $embQueryNth = '&'.$embQuery;
     }
   }
 
@@ -916,7 +928,7 @@
   }
 
   function getSurveillanceStatsTags($surveillanceStatsJSON) {
-    global $pieRadius;
+    global $pieRadius, $embQueryNth;
 
     $surveillanceStatsObjects = json_decode($surveillanceStatsJSON);
 
@@ -975,7 +987,7 @@
       $pieAEndTag = '';
 
       if ($piePieObject->{'has-link'}) {
-        $pieAStartTag = '<a xlink:href="./'.$piePieObject->{'url-query'}.'">';
+        $pieAStartTag = '<a xlink:href="./'.($piePieObject->{'url-query'}).$embQueryNth.'">';
         $pieAEndTag = '</a>';
       }
 
@@ -1037,7 +1049,7 @@
       $subtitle = '';
 
       if ($pieLegendObject->{'has-link'}) {
-        $title = '<a href="./'.$pieLegendObject->{'url-query'}.'">'.$title.'</a>';
+        $title = '<a href="./'.($pieLegendObject->{'url-query'}.$embQueryNth).'">'.$title.'</a>';
       }
 
       if ($pieLegendObject->{'has-subtitle'}) {
@@ -1118,7 +1130,7 @@
       $title = $timeLegendObject->{'title'};
 
       if ($timeLegendObject->{'has-link'}) {
-        $title = '<a href="./'.$timeLegendObject->{'url-query'}.'">'.$title.'</a>';
+        $title = '<a href="./'.($timeLegendObject->{'url-query'}).$embQueryNth.'">'.$title.'</a>';
       }
 
       $rowTitleArray[] = $title;  // &#9642;&#9726;&#9724;&#9632;
@@ -1157,7 +1169,7 @@
       $lineAEndTag = '';
 
       if ($lineObject->{'has-link'}) {
-        $lineAStartTag = '<a xlink:href="./'.$lineObject->{'url-query'}.'">';
+        $lineAStartTag = '<a xlink:href="./'.($lineObject->{'url-query'}).$embQueryNth.'">';
         $lineAEndTag = '</a>';
       }
 
@@ -1311,11 +1323,13 @@
   }
 
   function getNaviElement($selectedClass, $urlQuery, $label, $vbHeight, $yText, $id) {
+    global $embQueryNth;
+
     $idLink = !empty($id) ? '#'.$id : '';
 
     return '
       <div class="navi-element '.$selectedClass.'" style="flex-grow: 1;">
-        <a href="./'.$urlQuery.$idLink.'">
+        <a href="./'.$urlQuery.$embQueryNth.$idLink.'">
           <svg viewbox="0 0 100 '.$vbHeight.'">
             <text class="navi-text" x="50" y="'.$yText.'">
               '.$label.'
@@ -1431,7 +1445,7 @@
     <link rel="stylesheet" href="<?php echo $pathToWebFolder.'css/stats.css' ?>">
   </head>
   <body>
-    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>">
+    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/'.$embQueryFirst ?>">
       <div class="header">
         <img src="<?php echo $pathToWebFolder.'images/title-sunders.png' ?>" alt="Surveillance under Surveillance">
       </div>
@@ -1440,7 +1454,7 @@
       echo getCharts($i18nStats, $i18nStatsDefault, $i18nCountries, $i18nCountriesDefault, $initialPie, $initialTime, $colsArray, $valsArray, $year, $month, $pieLevel, $statsQueryObject);
       $mysqli->close();
     ?>
-    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/' ?>">
+    <a href="<?php echo $pathToWebFolder.$initialLanguage.'/'.$embQueryFirst ?>">
       <div class="footer">
         <img src="<?php echo $pathToWebFolder.'images/title-mea.png' ?>" alt="MAP 'EM ALL">
       </div>
