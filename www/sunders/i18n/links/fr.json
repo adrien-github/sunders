@@ -1,10 +1,10 @@
 {
   "texts": {
-    "eng": "",
-    "ger": "",
+    "eng": "Anglais",
+    "ger": "Allemand",
     "sect-2015": "2015",
     "sect-2016": "2016",
-    "secure-alt": "",
-    "insecure-alt": ""
+    "secure-alt": "Connexion sécurisée",
+    "insecure-alt": "Connexion non sécurisée !"
   }
 }

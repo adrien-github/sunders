@@ -1,11 +1,11 @@
 {
   "texts": {
-    "title-credits": "",
-    "type-idea": "",
-    "type-js": "",
-    "type-map": "",
-    "type-service": "",
-    "type-icon": "",
-    "type-font": ""
+    "title-credits": "Crédits & Licences",
+    "type-idea": "Idée et base de code",
+    "type-js": "Modules Javascript",
+    "type-map": "Carte et données des nœuds de surveillance",
+    "type-service": "Services Web",
+    "type-icon": "Icônes",
+    "type-font": "Polices des titres"
   }
 }
